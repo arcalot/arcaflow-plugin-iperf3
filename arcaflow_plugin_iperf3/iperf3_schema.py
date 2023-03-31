@@ -4,7 +4,7 @@ import enum
 import re
 import typing
 from dataclasses import dataclass
-from arcaflow_plugin_sdk import schema
+from arcaflow_plugin_sdk import schema, plugin
 
 
 # # Usage: iperf3 [-s|-c host] [options]
@@ -94,12 +94,8 @@ class CommonInputParams:
 
 @dataclass
 class ServerInputParams(CommonInputParams):
-    #TODO replace this once signaling is available
-    run_duration: typing.Annotated[
-        int,
-        schema.name("server run duration"),
-        schema.description("Time in seconds to run the iperf3 server before exiting"),
-    ]
+    {}
+    
     #TODO
 # # Server specific:
 # #   -s, --server              run in server mode
@@ -110,6 +106,18 @@ class ServerInputParams(CommonInputParams):
 # #                             authentication credentials
 # #   --authorized-users-path   path to the configuration file containing user
 # #                             credentials
+
+server_input_params_schema = plugin.build_object_schema(ServerInputParams)
+
+@dataclass
+class ServerAllParams(ServerInputParams):
+    #TODO replace this once signaling is available
+    run_duration: typing.Annotated[
+        typing.Optional[int],
+        schema.name("server run duration"),
+        schema.description("Time in seconds to run the iperf3 server before exiting"),
+    ] = 600
+
 
 @dataclass
 class ClientInputParams(CommonInputParams):
@@ -210,7 +218,7 @@ class ClientInputParams(CommonInputParams):
     set_mss: typing.Annotated[
         typing.Optional[int],
         #TODO implement units
-        typing.id("set-mss"),
+        schema.id("set-mss"),
         schema.name("maximum segment size"),
         schema.description("   #         set TCP/SCTP maximum segment size (MTU - 40 bytes)"),
     ] = None

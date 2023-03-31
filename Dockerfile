@@ -42,7 +42,7 @@ RUN python3.9 -m pip install -r requirements.txt
 
 WORKDIR /app/${package}
 
-# ENTRYPOINT ["python3", "iperf3_plugin.py"]
+ENTRYPOINT ["python3", "iperf3_plugin.py"]
 CMD []
 
 LABEL org.opencontainers.image.source="https://github.com/arcalot/arcaflow-plugin-iperf3"

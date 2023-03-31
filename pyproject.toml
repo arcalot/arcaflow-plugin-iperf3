@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "arcaflow-plugin-template-python"
+name = "arcaflow-plugin-iperf3"
 version = "0.1.0"
 description = ""
 authors = ["Arcalot"]

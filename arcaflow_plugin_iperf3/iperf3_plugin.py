@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import json
 import sys
 import typing
 import subprocess
@@ -28,9 +27,9 @@ def run_iperf3(mode, input_params):
             if value == "TCP":
                 continue
             elif value == "UDP":
-                    iperf3_cmd.append("--udp")
+                iperf3_cmd.append("--udp")
             elif value == "SCTP":
-                    iperf3_cmd.append("--sctp")
+                iperf3_cmd.append("--sctp")
         elif param == "host":
             iperf3_cmd.append("--client")
             iperf3_cmd.append(f"{value}")
@@ -43,7 +42,7 @@ def run_iperf3(mode, input_params):
 
     if mode == "server":
         print()
-        ##TODO Refactor to run both client and server from function
+        # TODO Refactor to run both client and server from function
     else:
         return subprocess.Popen(
             iperf3_cmd,
@@ -128,6 +127,7 @@ def iperf3_client(
     print(outs.decode("utf-8"))
 
     return "success", ClientSuccessOutput("TODO")
+
 
 if __name__ == "__main__":
     sys.exit(

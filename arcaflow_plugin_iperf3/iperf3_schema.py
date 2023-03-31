@@ -137,7 +137,9 @@ class ClientInputParams(CommonInputParams):
     host: typing.Annotated[
         typing.Optional[str],
         schema.name("server host"),
-        schema.description("the hostname or IP address of the iperf3 server; defaults to localhost"),
+        schema.description(
+            "the hostname or IP address of the iperf3 server; defaults to localhost"
+        ),
     ] = "localhost"
     protocol: typing.Annotated[
         typing.Optional[Protocol],
@@ -161,7 +163,9 @@ class ClientInputParams(CommonInputParams):
         # TODO implement units
         schema.name("bitrate"),
         schema.description(
-            " #[KMG][/#]  target bitrate in bits/sec (0 for unlimited) (default 1 Mbit/sec for UDP, unlimited for TCP) (optional slash and packet count for burst mode)"
+            " #[KMG][/#]  target bitrate in bits/sec (0 for unlimited)"
+            "(default 1 Mbit/sec for UDP, unlimited for TCP) (optional slash "
+            "and packet count for burst mode)"
         ),
     ] = None
     pacing_timer: typing.Annotated[
@@ -179,7 +183,8 @@ class ClientInputParams(CommonInputParams):
         schema.id("fq-rate"),
         schema.name("fair-queuing rate"),
         schema.description(
-            " #[KMG]          enable fair-queuing based socket pacing inbits/sec (Linux only)"
+            " #[KMG]          enable fair-queuing based socket pacing inbits/"
+            "sec (Linux only)"
         ),
     ] = None
     time: typing.Annotated[
@@ -211,14 +216,16 @@ class ClientInputParams(CommonInputParams):
         # TODO implement units
         schema.name("length"),
         schema.description(
-            "    #[KMG]    length of buffer to read or write (default 128 KB for TCP, dynamic or 1460 for UDP)"
+            "    #[KMG]    length of buffer to read or write (default 128 KB "
+            "for TCP, dynamic or 1460 for UDP)"
         ),
     ] = None
     cport: typing.Annotated[
         typing.Optional[int],
         schema.name("client port"),
         schema.description(
-            "         <port>    bind to a specific client port (TCP and UDP, default: ephemeral port)"
+            "         <port>    bind to a specific client port (TCP and UDP, "
+            "default: ephemeral port)"
         ),
     ] = None
     parallel: typing.Annotated[
@@ -243,7 +250,8 @@ class ClientInputParams(CommonInputParams):
     # congestion: typing.Annotated[
     #     typing.Optional[Congestion],
     #     schema.name("congestion algorithm"),
-    #     schema.description(" <algo>   set TCP congestion control algorithm (Linux and FreeBSD only)"),
+    #     schema.description(" <algo>   set TCP congestion control algorithm
+    # (Linux and FreeBSD only)"),
     # ] = None
     set_mss: typing.Annotated[
         typing.Optional[int],
@@ -279,7 +287,9 @@ class ClientInputParams(CommonInputParams):
         # TODO support octal and hex values
         schema.name("IP type of service"),
         schema.description(
-            " N               set the IP type of service, 0-255.The usual prefixes for octal and hex can be used, i.e. 52, 064 and 0x34 all specify the same value."
+            " N               set the IP type of service, 0-255.The usual "
+            "prefixes for octal and hex can be used, i.e. 52, 064 and 0x34 all"
+            "specify the same value."
         ),
     ] = None
     dscp: typing.Annotated[
@@ -288,7 +298,9 @@ class ClientInputParams(CommonInputParams):
         # TODO support octal and hex values (and "symbolic"?)
         schema.name("dscp"),
         schema.description(
-            " N or --dscp val    set the IP dscp value, either 0-63 or symbolic. Numeric values can be specified in decimal, octal and hex (see --tos above)."
+            " N or --dscp val    set the IP dscp value, either 0-63 or "
+            "symbolic. Numeric values can be specified in decimal, octal and "
+            "hex (see --tos above)."
         ),
     ] = None
     flowlabel: typing.Annotated[

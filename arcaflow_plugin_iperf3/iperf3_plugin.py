@@ -20,7 +20,7 @@ from iperf3_schema import (
 def run_iperf3(mode, input_params):
     # Set the iperf3 command
     # iperf3_cmd = ["iperf3", f"--{mode}", "--verbose", "--json", "--debug"]
-    iperf3_cmd = ["iperf3", "--verbose", "--json", "--debug"]
+    iperf3_cmd = ["iperf3", "--json"]
 
     for param, value in input_params.items():
         if param == "protocol":
@@ -64,7 +64,7 @@ def iperf3_server(
 ) -> typing.Tuple[str, typing.Union[ServerSuccessOutput, ServerErrorOutput]]:
 
     # Set the iperf3 server command
-    server_cmd = ["iperf3", "--server", "--verbose", "--json", "--debug"]
+    server_cmd = ["iperf3", "--server", "--json"]
     input_params = server_input_params_schema.serialize(params)
     for param, value in input_params.items():
         if type(value) == bool and not value:

@@ -20,9 +20,21 @@ from iperf3_schema import (
 
 def run_iperf3(mode, input_params):
     # Set the iperf3 command
-    iperf3_cmd = ["iperf3", f"--{mode}", "--verbose", "--json", "--debug"]
+    # iperf3_cmd = ["iperf3", f"--{mode}", "--verbose", "--json", "--debug"]
+    iperf3_cmd = ["iperf3", "--verbose", "--json", "--debug"]
+
     for param, value in input_params.items():
-        if type(value) == bool and not value:
+        if param == "protocol":
+            if value == "TCP":
+                continue
+            elif value == "UDP":
+                    iperf3_cmd.append("--udp")
+            elif value == "SCTP":
+                    iperf3_cmd.append("--sctp")
+        elif param == "host":
+            iperf3_cmd.append("--client")
+            iperf3_cmd.append(f"{value}")
+        elif type(value) == bool and not value:
             continue
         else:
             iperf3_cmd.append(f"--{param}")

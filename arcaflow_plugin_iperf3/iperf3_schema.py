@@ -134,6 +134,11 @@ class ClientInputParams(CommonInputParams):
     #     schema.name(""),
     #     schema.description("                    use SCTP rather than TCP"),
     # ] = None
+    host: typing.Annotated[
+        typing.Optional[str],
+        schema.name("server host"),
+        schema.description("the hostname or IP address of the iperf3 server; defaults to localhost"),
+    ] = "localhost"
     protocol: typing.Annotated[
         typing.Optional[Protocol],
         schema.name("protocol"),

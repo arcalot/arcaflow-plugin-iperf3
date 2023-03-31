@@ -52,6 +52,7 @@ class CommonInputParams:
     #     schema.description("xmit/recv the specified file"),
     # ]
     affinity: typing.Annotated[
+        #FIXME How do I set the pattern expected?
         typing.Optional[re.Pattern],
         schema.name("affinity"),
         schema.description("n/n,m      set CPU affinity"),
@@ -75,7 +76,7 @@ class CommonInputParams:
     # ]
     forceflush: typing.Annotated[
         typing.Optional[bool],
-        schema.name(""),
+        schema.name("force flush"),
         schema.description("force flushing output at every interval"),
     ] = False
     # debug: typing.Annotated[
@@ -93,6 +94,12 @@ class CommonInputParams:
 
 @dataclass
 class ServerInputParams(CommonInputParams):
+    #TODO replace this once signaling is available
+    run_duration: typing.Annotated[
+        int,
+        schema.name("server run duration"),
+        schema.description("Time in seconds to run the iperf3 server before exiting"),
+    ]
     #TODO
 # # Server specific:
 # #   -s, --server              run in server mode
@@ -280,7 +287,7 @@ class ClientInputParams(CommonInputParams):
 # # [KMG] indicates options that support a K/M/G suffix for kilo-, mega-, or giga-
 
 @dataclass
-class SuccessOutput:
+class ServerSuccessOutput:
     """
     This is the output data structure for the success case.
     """
@@ -289,7 +296,25 @@ class SuccessOutput:
 
 
 @dataclass
-class ErrorOutput:
+class ClientSuccessOutput:
+    """
+    This is the output data structure for the success case.
+    """
+
+    message: str
+
+
+@dataclass
+class ServerErrorOutput:
+    """
+    This is the output data structure in the error  case.
+    """
+
+    error: str
+
+
+@dataclass
+class ClientErrorOutput:
     """
     This is the output data structure in the error  case.
     """

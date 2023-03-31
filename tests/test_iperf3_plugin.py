@@ -7,13 +7,9 @@ from arcaflow_plugin_sdk import plugin
 class HelloWorldTest(unittest.TestCase):
     @staticmethod
     def test_serialization():
-        plugin.test_object_serialization(
-            example_plugin.InputParams("John Doe")
-        )
+        plugin.test_object_serialization(example_plugin.InputParams("John Doe"))
 
-        plugin.test_object_serialization(
-            example_plugin.SuccessOutput("Hello, world!")
-        )
+        plugin.test_object_serialization(example_plugin.SuccessOutput("Hello, world!"))
 
         plugin.test_object_serialization(
             example_plugin.ErrorOutput(error="This is an error")

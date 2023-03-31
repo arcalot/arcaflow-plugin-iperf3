@@ -1,4 +1,4 @@
-run_duration: 5
+run_duration: 60
 port: 50000
 interval: 10
 forceflush: True

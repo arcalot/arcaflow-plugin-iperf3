@@ -12,6 +12,7 @@ from arcaflow_plugin_sdk import schema, plugin
 
 # # Server or Client:
 
+
 class Format(enum.Enum):
     k = "k"
     m = "m"
@@ -22,10 +23,12 @@ class Format(enum.Enum):
     G = "G"
     T = "T"
 
+
 class Protocol(enum.Enum):
     TCP = "TCP"
     UDP = "UDP"
     SCTP = "SCTP"
+
 
 # class Congestion(enum.Enum):
 
@@ -52,7 +55,7 @@ class CommonInputParams:
     #     schema.description("xmit/recv the specified file"),
     # ]
     affinity: typing.Annotated[
-        #FIXME How do I set the pattern expected?
+        # FIXME How do I set the pattern expected?
         typing.Optional[re.Pattern],
         schema.name("affinity"),
         schema.description("n/n,m      set CPU affinity"),
@@ -92,11 +95,14 @@ class CommonInputParams:
     #     schema.description("show this message and quit"),
     # ]
 
+
 @dataclass
 class ServerInputParams(CommonInputParams):
     {}
-    
-    #TODO
+
+    # TODO
+
+
 # # Server specific:
 # #   -s, --server              run in server mode
 # #   -D, --daemon              run the server as a daemon
@@ -109,9 +115,10 @@ class ServerInputParams(CommonInputParams):
 
 server_input_params_schema = plugin.build_object_schema(ServerInputParams)
 
+
 @dataclass
 class ServerAllParams(ServerInputParams):
-    #TODO replace this once signaling is available
+    # TODO replace this once signaling is available
     run_duration: typing.Annotated[
         typing.Optional[int],
         schema.name("server run duration"),
@@ -121,8 +128,8 @@ class ServerAllParams(ServerInputParams):
 
 @dataclass
 class ClientInputParams(CommonInputParams):
-# # Client specific:
-# #   -c, --client    <host>    run in client mode, connecting to <host>
+    # # Client specific:
+    # #   -c, --client    <host>    run in client mode, connecting to <host>
     # sctp: typing.Annotated[
     #     schema.name(""),
     #     schema.description("                    use SCTP rather than TCP"),
@@ -130,10 +137,10 @@ class ClientInputParams(CommonInputParams):
     protocol: typing.Annotated[
         typing.Optional[Protocol],
         schema.name("protocol"),
-        schema.description("the protocol to use - TCP, UDP, or SCTP (default TCP)")
-    ] = "TCP"
-# #   -X, --xbind <name>        bind SCTP association to links
-# #   --nstreams      #         number of SCTP streams
+        schema.description("the protocol to use - TCP, UDP, or SCTP (default TCP)"),
+    ] = Protocol.TCP
+    # #   -X, --xbind <name>        bind SCTP association to links
+    # #   --nstreams      #         number of SCTP streams
     # udp: typing.Annotated[
     #     schema.name(""),
     #     schema.description("                 use UDP rather than TCP"),
@@ -146,52 +153,68 @@ class ClientInputParams(CommonInputParams):
     ] = None
     bitrate: typing.Annotated[
         typing.Optional[int],
-        #TODO implement units
+        # TODO implement units
         schema.name("bitrate"),
-        schema.description(" #[KMG][/#]  target bitrate in bits/sec (0 for unlimited) (default 1 Mbit/sec for UDP, unlimited for TCP) (optional slash and packet count for burst mode)"),
+        schema.description(
+            " #[KMG][/#]  target bitrate in bits/sec (0 for unlimited) (default 1 Mbit/sec for UDP, unlimited for TCP) (optional slash and packet count for burst mode)"
+        ),
     ] = None
     pacing_timer: typing.Annotated[
         typing.Optional[int],
-        #TODO implement units
+        # TODO implement units
         schema.id("pacing-timer"),
         schema.name("pacing timer"),
-        schema.description(" #[KMG]     set the timing for pacing, in microseconds (default 1000)"),
+        schema.description(
+            " #[KMG]     set the timing for pacing, in microseconds (default 1000)"
+        ),
     ] = None
     fq_rate: typing.Annotated[
         typing.Optional[int],
-        #TODO implement units
+        # TODO implement units
         schema.id("fq-rate"),
         schema.name("fair-queuing rate"),
-        schema.description(" #[KMG]          enable fair-queuing based socket pacing inbits/sec (Linux only)"),
-    ] = None                    
+        schema.description(
+            " #[KMG]          enable fair-queuing based socket pacing inbits/sec (Linux only)"
+        ),
+    ] = None
     time: typing.Annotated[
         typing.Optional[int],
         schema.name("time"),
-        schema.description("      #         time in seconds to transmit for (default 10 secs)"),
+        schema.description(
+            "      #         time in seconds to transmit for (default 10 secs)"
+        ),
     ] = None
     bytes: typing.Annotated[
         typing.Optional[int],
-        #TODO implement units
-        #TODO bytes and time inputs should be mutually exclusive
+        # TODO implement units
+        # TODO bytes and time inputs should be mutually exclusive
         schema.name("bytes"),
-        schema.description("     #[KMG]    number of bytes to transmit (instead of -t)"),
+        schema.description(
+            "     #[KMG]    number of bytes to transmit (instead of -t)"
+        ),
     ] = None
     blockcount: typing.Annotated[
         typing.Optional[int],
-        #TODO implement units
+        # TODO implement units
         schema.name("block count"),
-        schema.description(" #[KMG]   number of blocks (packets) to transmit (instead of -t or -n)"),
+        schema.description(
+            " #[KMG]   number of blocks (packets) to transmit (instead of -t or -n)"
+        ),
     ] = None
     length: typing.Annotated[
         typing.Optional[int],
-        #TODO implement units
+        # TODO implement units
         schema.name("length"),
-        schema.description("    #[KMG]    length of buffer to read or write (default 128 KB for TCP, dynamic or 1460 for UDP)"),
+        schema.description(
+            "    #[KMG]    length of buffer to read or write (default 128 KB for TCP, dynamic or 1460 for UDP)"
+        ),
     ] = None
     cport: typing.Annotated[
         typing.Optional[int],
         schema.name("client port"),
-        schema.description("         <port>    bind to a specific client port (TCP and UDP, default: ephemeral port)"),
+        schema.description(
+            "         <port>    bind to a specific client port (TCP and UDP, default: ephemeral port)"
+        ),
     ] = None
     parallel: typing.Annotated[
         typing.Optional[int],
@@ -201,15 +224,17 @@ class ClientInputParams(CommonInputParams):
     reverse: typing.Annotated[
         typing.Optional[bool],
         schema.name("reverse"),
-        schema.description("             run in reverse mode (server sends, client receives)"),
+        schema.description(
+            "             run in reverse mode (server sends, client receives)"
+        ),
     ] = False
     window: typing.Annotated[
         typing.Optional[int],
-        #TODO implement units
+        # TODO implement units
         schema.name("window size"),
         schema.description("    #[KMG]    set window size / socket buffer size"),
     ] = None
-    #TODO It's unclear what input iperf3 expects for this parameter
+    # TODO It's unclear what input iperf3 expects for this parameter
     # congestion: typing.Annotated[
     #     typing.Optional[Congestion],
     #     schema.name("congestion algorithm"),
@@ -217,20 +242,24 @@ class ClientInputParams(CommonInputParams):
     # ] = None
     set_mss: typing.Annotated[
         typing.Optional[int],
-        #TODO implement units
+        # TODO implement units
         schema.id("set-mss"),
         schema.name("maximum segment size"),
-        schema.description("   #         set TCP/SCTP maximum segment size (MTU - 40 bytes)"),
+        schema.description(
+            "   #         set TCP/SCTP maximum segment size (MTU - 40 bytes)"
+        ),
     ] = None
     no_delay: typing.Annotated[
         typing.Optional[bool],
         schema.id("no-delay"),
         schema.name("TCP/SCTP no delay"),
-        schema.description("            set TCP/SCTP no delay, disabling Nagle's Algorithm"),
+        schema.description(
+            "            set TCP/SCTP no delay, disabling Nagle's Algorithm"
+        ),
     ] = False
     version4: typing.Annotated[
         typing.Optional[bool],
-        #TODO version4 and version6 should be mutually exclusive
+        # TODO version4 and version6 should be mutually exclusive
         schema.name("IPv4 only"),
         schema.description("            only use IPv4"),
     ] = False
@@ -241,22 +270,28 @@ class ClientInputParams(CommonInputParams):
     ] = False
     tos: typing.Annotated[
         typing.Optional[int],
-        #TODO validate range
-        #TODO support octal and hex values
+        # TODO validate range
+        # TODO support octal and hex values
         schema.name("IP type of service"),
-        schema.description(" N               set the IP type of service, 0-255.The usual prefixes for octal and hex can be used, i.e. 52, 064 and 0x34 all specify the same value."),
+        schema.description(
+            " N               set the IP type of service, 0-255.The usual prefixes for octal and hex can be used, i.e. 52, 064 and 0x34 all specify the same value."
+        ),
     ] = None
     dscp: typing.Annotated[
         typing.Optional[int],
-        #TODO validate range
-        #TODO support octal and hex values (and "symbolic"?)
+        # TODO validate range
+        # TODO support octal and hex values (and "symbolic"?)
         schema.name("dscp"),
-        schema.description(" N or --dscp val    set the IP dscp value, either 0-63 or symbolic. Numeric values can be specified in decimal, octal and hex (see --tos above)."),
+        schema.description(
+            " N or --dscp val    set the IP dscp value, either 0-63 or symbolic. Numeric values can be specified in decimal, octal and hex (see --tos above)."
+        ),
     ] = None
     flowlabel: typing.Annotated[
         typing.Optional[int],
         schema.name(""),
-        schema.description(" N         set the IPv6 flow label (only supported on Linux)"),
+        schema.description(
+            " N         set the IPv6 flow label (only supported on Linux)"
+        ),
     ] = None
     zerocopy: typing.Annotated[
         typing.Optional[bool],
@@ -270,7 +305,7 @@ class ClientInputParams(CommonInputParams):
     ] = None
     title: typing.Annotated[
         typing.Optional[str],
-        #TODO validate length maximum (what is it?)
+        # TODO validate length maximum (what is it?)
         schema.name("output prefix"),
         schema.description(" str           prefix every output line with this string"),
     ] = None
@@ -282,17 +317,22 @@ class ClientInputParams(CommonInputParams):
     ] = False
     udp_counters_64bit: typing.Annotated[
         typing.Optional[bool],
-        #TODO only use with UDP
+        # TODO only use with UDP
         schema.id("udp-counters-64bit"),
         schema.name("UDP 64-bit counters"),
         schema.description("      use 64-bit counters in UDP test packets"),
     ] = None
-    #TODO implement auth
+    # TODO implement auth
+
+
 # #   --username                username for authentication
 # #   --rsa-public-key-path     path to the RSA public key used to encrypt
 # #                             authentication credentials
 
 # # [KMG] indicates options that support a K/M/G suffix for kilo-, mega-, or giga-
+
+client_input_params_schema = plugin.build_object_schema(ClientInputParams)
+
 
 @dataclass
 class ServerSuccessOutput:

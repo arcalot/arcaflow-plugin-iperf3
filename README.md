@@ -24,6 +24,13 @@ Runs the iperf3 client workload
             </details><details><summary>bytes (<code>int</code>)</summary>
                 <table><tbody><tr><th>Name:</th><td>number of bytes to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
+            </details><details><summary>congestion (<code>enum[string]</code>)</summary>
+                <table><tbody><tr><th>Name:</th><td>set TCP congestion control algorithm (Linux and FreeBSD only)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
+        <details><summary>Values</summary>
+            <ul><li><strong><code>YeAH</code>:</strong> YeAH</li><li><strong><code>bic</code>:</strong> bic</li><li><strong><code>cubic</code>:</strong> cubic</li><li><strong><code>htcp</code>:</strong> htcp</li><li><strong><code>reno</code>:</strong> reno</li><li><strong><code>vegas</code>:</strong> vegas</li><li><strong><code>westwood</code>:</strong> westwood</li></ul>
+        </details>
+    </td>
+</tr></tbody></table>
             </details><details><summary>connect-timeout (<code>int</code>)</summary>
                 <table><tbody><tr><th>Name:</th><td>timeout for control connection setup (ms)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
@@ -123,6 +130,13 @@ Runs the iperf3 client workload
         </details><details><summary>bytes (<code>int</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>number of bytes to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
+        </details><details><summary>congestion (<code>enum[string]</code>)</summary>
+        <table><tbody><tr><th>Name:</th><td>set TCP congestion control algorithm (Linux and FreeBSD only)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
+        <details><summary>Values</summary>
+            <ul><li><strong><code>YeAH</code>:</strong> YeAH</li><li><strong><code>bic</code>:</strong> bic</li><li><strong><code>cubic</code>:</strong> cubic</li><li><strong><code>htcp</code>:</strong> htcp</li><li><strong><code>reno</code>:</strong> reno</li><li><strong><code>vegas</code>:</strong> vegas</li><li><strong><code>westwood</code>:</strong> westwood</li></ul>
+        </details>
+    </td>
+</tr></tbody></table>
         </details><details><summary>connect-timeout (<code>int</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>timeout for control connection setup (ms)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>

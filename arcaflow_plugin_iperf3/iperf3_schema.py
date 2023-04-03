@@ -24,7 +24,16 @@ class Protocol(enum.Enum):
     SCTP = "SCTP"
 
 
-# class Congestion(enum.Enum):
+class Congestion(enum.Enum):
+    #TODO Confirm this is fully inclusive
+    reno = "reno"
+    cubic = "cubic"
+    bic = "bic"
+    htcp = "htcp"
+    vegas = "vegas"
+    westwood = "westwood"
+    YeAH = "YeAH"
+
 
 unit_bits = schema.Units(
     schema.Unit("b", "b", "bit", "bits"),
@@ -280,13 +289,11 @@ class ClientInputParams(CommonInputParams):
         schema.units(unit_bytes),
         schema.description(f"set window size / socket buffer size {kmgt_description}"),
     ] = None
-    # TODO It's unclear what input iperf3 expects for this parameter
-    # congestion: typing.Annotated[
-    #     typing.Optional[Congestion],
-    #     schema.name("congestion algorithm"),
-    #     schema.description(" <algo>   set TCP congestion control algorithm
-    # (Linux and FreeBSD only)"),
-    # ] = None
+    congestion: typing.Annotated[
+        typing.Optional[Congestion],
+        schema.name("congestion algorithm"),
+        schema.description("set TCP congestion control algorithm (Linux and FreeBSD only)"),
+    ] = None
     set_mss: typing.Annotated[
         typing.Optional[int],
         schema.id("set-mss"),

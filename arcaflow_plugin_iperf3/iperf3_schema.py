@@ -180,6 +180,7 @@ class ClientInputParams(CommonInputParams):
         schema.name("protocol"),
         schema.description("the protocol to use - TCP, UDP, or SCTP (default TCP)"),
     ] = Protocol.TCP
+    #TODO Implement additional SCTP params
     # #   -X, --xbind <name>        bind SCTP association to links
     # #   --nstreams      #         number of SCTP streams
     connect_timeout: typing.Annotated[
@@ -219,19 +220,21 @@ class ClientInputParams(CommonInputParams):
         typing.Optional[int],
         schema.name("time"),
         schema.units(unit_seconds),
+        schema.conflicts("bytes blockcount"),
         schema.description("time in seconds to transmit for (default 10 secs)"),
     ] = None
     bytes: typing.Annotated[
         typing.Optional[int],
-        # TODO bytes and time inputs should be mutually exclusive
         schema.name("bytes"),
         schema.units(unit_bytes),
+        schema.conflicts("time blockcount"),
         schema.description(f"number of bytes to transmit {kmgt_description}"),
     ] = None
     blockcount: typing.Annotated[
         typing.Optional[int],
         schema.name("block count"),
         schema.units(unit_bytes),
+        schema.conflicts("time bytes"),
         schema.description(
             f"number of blocks (packets) to transmit {kmgt_description}"
         ),
@@ -294,35 +297,34 @@ class ClientInputParams(CommonInputParams):
     ] = False
     version4: typing.Annotated[
         typing.Optional[bool],
-        # TODO version4 and version6 should be mutually exclusive
         schema.name("IPv4 only"),
+        schema.conflicts("version6"),
         schema.description("            only use IPv4"),
     ] = False
     version6: typing.Annotated[
         typing.Optional[bool],
         schema.name("IPv6 only"),
+        schema.conflicts("version4"),
         schema.description("            only use IPv6"),
     ] = False
     tos: typing.Annotated[
         typing.Optional[int],
-        # TODO validate range
-        # TODO support octal and hex values
+        # TODO support octal and hex values?
         schema.name("IP type of service"),
+        schema.min(0),
+        schema.max(255),
         schema.description(
-            " N               set the IP type of service, 0-255.The usual "
-            "prefixes for octal and hex can be used, i.e. 52, 064 and 0x34 all"
-            "specify the same value."
+            "set the IP type of service, 0-255."
         ),
     ] = None
     dscp: typing.Annotated[
         typing.Optional[int],
-        # TODO validate range
-        # TODO support octal and hex values (and "symbolic"?)
+        # TODO support octal and hex values (and "symbolic"?)?
         schema.name("dscp"),
+        schema.min(0),
+        schema.max(63),
         schema.description(
-            " N or --dscp val    set the IP dscp value, either 0-63 or "
-            "symbolic. Numeric values can be specified in decimal, octal and "
-            "hex (see --tos above)."
+            "set the IP dscp value, 0-63"
         ),
     ] = None
     flowlabel: typing.Annotated[

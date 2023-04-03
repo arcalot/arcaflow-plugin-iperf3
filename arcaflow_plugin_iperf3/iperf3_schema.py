@@ -77,7 +77,9 @@ class CommonInputParams:
     format: typing.Annotated[
         typing.Optional[Format],
         schema.name("format"),
-        schema.description("[kmgtKMGT] format to report: Kbits, Mbits, Gbits, Tbits"),
+        schema.description(
+            "[kmgtKMGT] format to report: kibi-, mibi, gibi, tebi- bits/Bytes"
+        ),
     ] = None
     interval: typing.Annotated[
         typing.Optional[int],
@@ -85,10 +87,10 @@ class CommonInputParams:
         schema.description("seconds between periodic throughput reports"),
     ] = None
     affinity: typing.Annotated[
-        # FIXME How do I set the pattern expected?
-        typing.Optional[re.Pattern],
+        typing.Optional[str],
         schema.name("affinity"),
-        schema.description("n/n,m      set CPU affinity"),
+        schema.pattern(re.compile(r"^\d+$|^\d+,\d+$")),
+        schema.description("[n/n,m] set CPU affinity"),
     ] = None
     bind: typing.Annotated[
         typing.Optional[str],

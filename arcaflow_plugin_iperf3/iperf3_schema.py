@@ -7,12 +7,6 @@ from dataclasses import dataclass
 from arcaflow_plugin_sdk import schema, plugin
 
 
-# # Usage: iperf3 [-s|-c host] [options]
-# #        iperf3 [-h|--help] [-v|--version]
-
-# # Server or Client:
-
-
 class Format(enum.Enum):
     k = "k"
     m = "m"
@@ -50,10 +44,6 @@ class CommonInputParams:
         schema.name("interval"),
         schema.description("seconds between periodic throughput reports"),
     ] = None
-    # file name: typing.Annotated[
-    #     schema.name(""),
-    #     schema.description("xmit/recv the specified file"),
-    # ]
     affinity: typing.Annotated[
         # FIXME How do I set the pattern expected?
         typing.Optional[re.Pattern],
@@ -65,6 +55,17 @@ class CommonInputParams:
         schema.name("bind"),
         schema.description("bind to the interface associated with the address <host>"),
     ] = None
+    forceflush: typing.Annotated[
+        typing.Optional[bool],
+        schema.name("force flush"),
+        schema.description("force flushing output at every interval"),
+    ] = False
+
+    # Params from the iperf3 input not used in the input schema
+    # file name: typing.Annotated[
+    #     schema.name(""),
+    #     schema.description("xmit/recv the specified file"),
+    # ]
     # verbose: typing.Annotated[
     #     schema.name(""),
     #     schema.description("more detailed output"),
@@ -77,11 +78,6 @@ class CommonInputParams:
     #     schema.name(""),
     #     schema.description("f               send output to a log file"),
     # ]
-    forceflush: typing.Annotated[
-        typing.Optional[bool],
-        schema.name("force flush"),
-        schema.description("force flushing output at every interval"),
-    ] = False
     # debug: typing.Annotated[
     #     schema.name(""),
     #     schema.description("emit debugging output"),
@@ -100,18 +96,20 @@ class CommonInputParams:
 class ServerInputParams(CommonInputParams):
     {}
 
-    # TODO
+    # TODO - Implement rsa and private key credentials handling
+
+    # Params from the iperf3 input not used in the input schema
+    # Server specific:
+    #   -s, --server              run in server mode
+    #   -D, --daemon              run the server as a daemon
+    #   -I, --pidfile file        write PID file
+    #   -1, --one-off             handle one client connection then exit
+    #   --rsa-private-key-path    path to the RSA private key used to decrypt
+    #                             authentication credentials
+    #   --authorized-users-path   path to the configuration file containing user
 
 
-# # Server specific:
-# #   -s, --server              run in server mode
-# #   -D, --daemon              run the server as a daemon
-# #   -I, --pidfile file        write PID file
-# #   -1, --one-off             handle one client connection then exit
-# #   --rsa-private-key-path    path to the RSA private key used to decrypt
-# #                             authentication credentials
-# #   --authorized-users-path   path to the configuration file containing user
-# #                             credentials
+#                             credentials
 
 server_input_params_schema = plugin.build_object_schema(ServerInputParams)
 
@@ -128,12 +126,6 @@ class ServerAllParams(ServerInputParams):
 
 @dataclass
 class ClientInputParams(CommonInputParams):
-    # # Client specific:
-    # #   -c, --client    <host>    run in client mode, connecting to <host>
-    # sctp: typing.Annotated[
-    #     schema.name(""),
-    #     schema.description("                    use SCTP rather than TCP"),
-    # ] = None
     host: typing.Annotated[
         typing.Optional[str],
         schema.name("server host"),
@@ -148,10 +140,6 @@ class ClientInputParams(CommonInputParams):
     ] = Protocol.TCP
     # #   -X, --xbind <name>        bind SCTP association to links
     # #   --nstreams      #         number of SCTP streams
-    # udp: typing.Annotated[
-    #     schema.name(""),
-    #     schema.description("                 use UDP rather than TCP"),
-    # ] = None
     connect_timeout: typing.Annotated[
         typing.Optional[int],
         schema.id("connect-timeout"),
@@ -339,49 +327,45 @@ class ClientInputParams(CommonInputParams):
         schema.name("UDP 64-bit counters"),
         schema.description("      use 64-bit counters in UDP test packets"),
     ] = None
-    # TODO implement auth
 
+    # TODO implement rsa public key
 
-# #   --username                username for authentication
-# #   --rsa-public-key-path     path to the RSA public key used to encrypt
-# #                             authentication credentials
+    # Params from the iperf3 input not used in the input schema
+    # Client specific:
+    #   --username                username for authentication
+    #   --rsa-public-key-path     path to the RSA public key used to encrypt
+    #                             authentication credentials
+    #   -c, --client    <host>    run in client mode, connecting to <host>
+    # sctp: typing.Annotated[
+    #     schema.name(""),
+    #     schema.description("                    use SCTP rather than TCP"),
+    # ] = None
+    # udp: typing.Annotated[
+    #     schema.name(""),
+    #     schema.description("                 use UDP rather than TCP"),
+    # ] = None
 
-# # [KMG] indicates options that support a K/M/G suffix for kilo-, mega-, or giga-
+    # [KMG] indicates options that support a K/M/G suffix for kilo-, mega-, or giga-
+
 
 client_input_params_schema = plugin.build_object_schema(ClientInputParams)
 
 
 @dataclass
 class ServerSuccessOutput:
-    """
-    This is the output data structure for the success case.
-    """
-
     message: str
 
 
 @dataclass
 class ClientSuccessOutput:
-    """
-    This is the output data structure for the success case.
-    """
-
     message: str
 
 
 @dataclass
 class ServerErrorOutput:
-    """
-    This is the output data structure in the error  case.
-    """
-
     error: str
 
 
 @dataclass
 class ClientErrorOutput:
-    """
-    This is the output data structure in the error  case.
-    """
-
     error: str

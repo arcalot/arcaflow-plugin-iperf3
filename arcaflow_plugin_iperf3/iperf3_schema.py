@@ -26,6 +26,46 @@ class Protocol(enum.Enum):
 
 # class Congestion(enum.Enum):
 
+unit_bits = schema.Units(
+    schema.Unit("b", "b", "bit", "bits"),
+    {
+        1024: schema.Unit("K", "K", "kibibit", "kibibits"),
+        1048576: schema.Unit("M", "M", "mibibit", "mibibits"),
+        1073741824: schema.Unit("G", "G", "gibibit", "gibibits"),
+        1099511627776: schema.Unit("T", "T", "tebibit", "tebibits"),
+    },
+)
+
+unit_bytes = schema.Units(
+    schema.Unit("B", "B", "byte", "bytes"),
+    {
+        1024: schema.Unit("K", "K", "kibibyte", "kibibytes"),
+        1048576: schema.Unit("M", "M", "mibibyte", "mibibytes"),
+        1073741824: schema.Unit("G", "G", "gibibyte", "gibibytes"),
+        1099511627776: schema.Unit("T", "T", "tebibyte", "tebibytes"),
+    },
+)
+
+kmgt_description = (
+    "- accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-"
+    "(2^10); integer input implies base unit (bits or bytes)"
+)
+
+unit_miliseconds = schema.Units(
+    schema.Unit("ms", "ms", "milisecond", "miliseconds"),
+    {
+        1000: schema.Unit("s", "s", "second", "seconds"),
+        60000: schema.Unit("m", "m", "minute", "minutes"),
+    },
+)
+
+unit_seconds = schema.Units(
+    schema.Unit("s", "s", "second", "seconds"),
+    {
+        60: schema.Unit("m", "m", "minute", "minutes"),
+    },
+)
+
 
 @dataclass
 class CommonInputParams:
@@ -148,91 +188,83 @@ class ClientInputParams(CommonInputParams):
     ] = None
     bitrate: typing.Annotated[
         typing.Optional[int],
-        # TODO implement units
         schema.name("bitrate"),
+        schema.units(unit_bits),
         schema.description(
-            " #[KMG][/#]  target bitrate in bits/sec (0 for unlimited)"
+            "target bitrate in bits/sec (0 for unlimited)"
             "(default 1 Mbit/sec for UDP, unlimited for TCP) (optional slash "
-            "and packet count for burst mode)"
+            f"and packet count for burst mode) {kmgt_description}"
         ),
     ] = None
     pacing_timer: typing.Annotated[
         typing.Optional[int],
-        # TODO implement units
         schema.id("pacing-timer"),
         schema.name("pacing timer"),
-        schema.description(
-            " #[KMG]     set the timing for pacing, in microseconds (default 1000)"
-        ),
+        schema.units(unit_miliseconds),
+        schema.description("set the timing for pacing, in microseconds (default 1000)"),
     ] = None
     fq_rate: typing.Annotated[
         typing.Optional[int],
-        # TODO implement units
         schema.id("fq-rate"),
         schema.name("fair-queuing rate"),
+        schema.units(unit_bits),
         schema.description(
-            " #[KMG]          enable fair-queuing based socket pacing inbits/"
-            "sec (Linux only)"
+            "enable fair-queuing based socket pacing inbits/sec (Linux only) "
+            f"{kmgt_description}"
         ),
     ] = None
     time: typing.Annotated[
         typing.Optional[int],
         schema.name("time"),
-        schema.description(
-            "      #         time in seconds to transmit for (default 10 secs)"
-        ),
+        schema.units(unit_seconds),
+        schema.description("time in seconds to transmit for (default 10 secs)"),
     ] = None
     bytes: typing.Annotated[
         typing.Optional[int],
-        # TODO implement units
         # TODO bytes and time inputs should be mutually exclusive
         schema.name("bytes"),
-        schema.description(
-            "     #[KMG]    number of bytes to transmit (instead of -t)"
-        ),
+        schema.units(unit_bytes),
+        schema.description(f"number of bytes to transmit {kmgt_description}"),
     ] = None
     blockcount: typing.Annotated[
         typing.Optional[int],
-        # TODO implement units
         schema.name("block count"),
+        schema.units(unit_bytes),
         schema.description(
-            " #[KMG]   number of blocks (packets) to transmit (instead of -t or -n)"
+            f"number of blocks (packets) to transmit {kmgt_description}"
         ),
     ] = None
     length: typing.Annotated[
         typing.Optional[int],
-        # TODO implement units
         schema.name("length"),
+        schema.units(unit_bytes),
         schema.description(
-            "    #[KMG]    length of buffer to read or write (default 128 KB "
-            "for TCP, dynamic or 1460 for UDP)"
+            "length of buffer to read or write (default 128 KB for TCP, "
+            f"dynamic or 1460 for UDP) {kmgt_description}"
         ),
     ] = None
     cport: typing.Annotated[
         typing.Optional[int],
         schema.name("client port"),
         schema.description(
-            "         <port>    bind to a specific client port (TCP and UDP, "
-            "default: ephemeral port)"
+            "bind to a specific client port (TCP and UDP, default: ephemeral port)"
         ),
     ] = None
     parallel: typing.Annotated[
         typing.Optional[int],
         schema.name("parallel"),
-        schema.description("  #         number of parallel client streams to run"),
+        schema.description("number of parallel client streams to run"),
     ] = None
     reverse: typing.Annotated[
         typing.Optional[bool],
         schema.name("reverse"),
-        schema.description(
-            "             run in reverse mode (server sends, client receives)"
-        ),
+        schema.description("run in reverse mode (server sends, client receives)"),
     ] = False
     window: typing.Annotated[
         typing.Optional[int],
-        # TODO implement units
         schema.name("window size"),
-        schema.description("    #[KMG]    set window size / socket buffer size"),
+        schema.units(unit_bytes),
+        schema.description(f"set window size / socket buffer size {kmgt_description}"),
     ] = None
     # TODO It's unclear what input iperf3 expects for this parameter
     # congestion: typing.Annotated[
@@ -243,11 +275,11 @@ class ClientInputParams(CommonInputParams):
     # ] = None
     set_mss: typing.Annotated[
         typing.Optional[int],
-        # TODO implement units
         schema.id("set-mss"),
         schema.name("maximum segment size"),
+        schema.units(unit_bytes),
         schema.description(
-            "   #         set TCP/SCTP maximum segment size (MTU - 40 bytes)"
+            f"set TCP/SCTP maximum segment size (MTU - 40 bytes) {kmgt_description}"
         ),
     ] = None
     no_delay: typing.Annotated[

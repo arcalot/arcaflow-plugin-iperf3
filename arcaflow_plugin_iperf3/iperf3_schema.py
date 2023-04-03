@@ -162,7 +162,7 @@ class ServerAllParams(ServerInputParams):
     run_duration: typing.Annotated[
         typing.Optional[int],
         schema.name("server run duration"),
-        schema.description("Time in seconds to run the iperf3 server before exiting"),
+        schema.description("time in seconds to run the iperf3 server before exiting"),
     ] = 600
 
 
@@ -180,9 +180,18 @@ class ClientInputParams(CommonInputParams):
         schema.name("protocol"),
         schema.description("the protocol to use - TCP, UDP, or SCTP (default TCP)"),
     ] = Protocol.TCP
-    #TODO Implement additional SCTP params
-    # #   -X, --xbind <name>        bind SCTP association to links
-    # #   --nstreams      #         number of SCTP streams
+    xbind: typing.Annotated[
+        #TODO SCTP params should conflict w/ TCP or UDP protocol
+        typing.Optional[bool],
+        schema.name("sctp xbind"),
+        schema.description("bind SCTP association to links"),
+    ] = None
+    nstreams: typing.Annotated[
+        #TODO SCTP params should conflict w/ TCP or UDP protocol
+        typing.Optional[int],
+        schema.name("sctp nstreams"),
+        schema.description("number of SCTP streams"),
+    ] = None
     connect_timeout: typing.Annotated[
         typing.Optional[int],
         schema.id("connect-timeout"),
@@ -292,20 +301,20 @@ class ClientInputParams(CommonInputParams):
         schema.id("no-delay"),
         schema.name("TCP/SCTP no delay"),
         schema.description(
-            "            set TCP/SCTP no delay, disabling Nagle's Algorithm"
+            "set TCP/SCTP no delay, disabling Nagle's Algorithm"
         ),
     ] = False
     version4: typing.Annotated[
         typing.Optional[bool],
         schema.name("IPv4 only"),
         schema.conflicts("version6"),
-        schema.description("            only use IPv4"),
+        schema.description("only use IPv4"),
     ] = False
     version6: typing.Annotated[
         typing.Optional[bool],
         schema.name("IPv6 only"),
         schema.conflicts("version4"),
-        schema.description("            only use IPv6"),
+        schema.description("only use IPv6"),
     ] = False
     tos: typing.Annotated[
         typing.Optional[int],
@@ -331,37 +340,37 @@ class ClientInputParams(CommonInputParams):
         typing.Optional[int],
         schema.name(""),
         schema.description(
-            " N         set the IPv6 flow label (only supported on Linux)"
+            "set the IPv6 flow label (only supported on Linux)"
         ),
     ] = None
     zerocopy: typing.Annotated[
         typing.Optional[bool],
         schema.name("zero copy"),
-        schema.description("            use a 'zero copy' method of sending data"),
+        schema.description("use a 'zero copy' method of sending data"),
     ] = False
     omit: typing.Annotated[
         typing.Optional[int],
         schema.name("omit first N seconds"),
-        schema.description(" N              omit the first n seconds"),
+        schema.description("omit the first n seconds"),
     ] = None
     title: typing.Annotated[
         typing.Optional[str],
         # TODO validate length maximum (what is it?)
         schema.name("output prefix"),
-        schema.description(" str           prefix every output line with this string"),
+        schema.description("prefix every output line with this string"),
     ] = None
     get_server_output: typing.Annotated[
         typing.Optional[bool],
         schema.id("get-server-output"),
         schema.name("get server output"),
-        schema.description("       get results from server"),
+        schema.description("get results from server"),
     ] = False
     udp_counters_64bit: typing.Annotated[
         typing.Optional[bool],
         # TODO only use with UDP
         schema.id("udp-counters-64bit"),
         schema.name("UDP 64-bit counters"),
-        schema.description("      use 64-bit counters in UDP test packets"),
+        schema.description("use 64-bit counters in UDP test packets"),
     ] = None
 
     # TODO implement rsa public key

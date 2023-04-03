@@ -181,13 +181,13 @@ class ClientInputParams(CommonInputParams):
         schema.description("the protocol to use - TCP, UDP, or SCTP (default TCP)"),
     ] = Protocol.TCP
     xbind: typing.Annotated[
-        #TODO SCTP params should conflict w/ TCP or UDP protocol
+        # TODO SCTP params should conflict w/ TCP or UDP protocol
         typing.Optional[bool],
         schema.name("sctp xbind"),
         schema.description("bind SCTP association to links"),
     ] = None
     nstreams: typing.Annotated[
-        #TODO SCTP params should conflict w/ TCP or UDP protocol
+        # TODO SCTP params should conflict w/ TCP or UDP protocol
         typing.Optional[int],
         schema.name("sctp nstreams"),
         schema.description("number of SCTP streams"),
@@ -300,9 +300,7 @@ class ClientInputParams(CommonInputParams):
         typing.Optional[bool],
         schema.id("no-delay"),
         schema.name("TCP/SCTP no delay"),
-        schema.description(
-            "set TCP/SCTP no delay, disabling Nagle's Algorithm"
-        ),
+        schema.description("set TCP/SCTP no delay, disabling Nagle's Algorithm"),
     ] = False
     version4: typing.Annotated[
         typing.Optional[bool],
@@ -322,9 +320,7 @@ class ClientInputParams(CommonInputParams):
         schema.name("IP type of service"),
         schema.min(0),
         schema.max(255),
-        schema.description(
-            "set the IP type of service, 0-255."
-        ),
+        schema.description("set the IP type of service, 0-255."),
     ] = None
     dscp: typing.Annotated[
         typing.Optional[int],
@@ -332,16 +328,12 @@ class ClientInputParams(CommonInputParams):
         schema.name("dscp"),
         schema.min(0),
         schema.max(63),
-        schema.description(
-            "set the IP dscp value, 0-63"
-        ),
+        schema.description("set the IP dscp value, 0-63"),
     ] = None
     flowlabel: typing.Annotated[
         typing.Optional[int],
         schema.name(""),
-        schema.description(
-            "set the IPv6 flow label (only supported on Linux)"
-        ),
+        schema.description("set the IPv6 flow label (only supported on Linux)"),
     ] = None
     zerocopy: typing.Annotated[
         typing.Optional[bool],
@@ -395,9 +387,25 @@ class ClientInputParams(CommonInputParams):
 
 client_input_params_schema = plugin.build_object_schema(ClientInputParams)
 
+
+@dataclass
+class ClientOutputCategories:
+    start: typing.Dict[str, typing.Any]
+    intervals: typing.List[typing.Any]
+    # intervals: typing.Dict[str, typing.Any]
+    end: typing.Dict[str, typing.Any]
+
+
+client_output_categories_schema = plugin.build_object_schema(ClientOutputCategories)
+
+
 @dataclass
 class ClientSuccessOutput:
-    output: typing.Dict[str, schema.ANY_TYPE]
+    # output: typing.Dict[str, typing.Dict[str, typing.Any]]
+    output: ClientOutputCategories
+
+
+# client_success_output_schema = plugin.build_object_schema(ClientSuccessOutput)
 
 
 @dataclass

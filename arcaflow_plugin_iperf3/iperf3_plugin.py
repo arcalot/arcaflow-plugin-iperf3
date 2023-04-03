@@ -15,6 +15,7 @@ from iperf3_schema import (
     ClientErrorOutput,
     server_input_params_schema,
     client_input_params_schema,
+    client_output_categories_schema,
 )
 
 
@@ -124,17 +125,20 @@ def iperf3_client(
             "Errors found in run. Output:\n" + outs.decode("utf-8")
         )
 
-    # Debug output
-    print(outs.decode("utf-8"))
+    json_out = json.loads(outs.decode("utf-8"))
 
-    return "success", ClientSuccessOutput(json.loads(outs.decode("utf-8")))
+    # Debug output
+    print(json_out)
+
+    output = client_output_categories_schema.unserialize(json_out)
+
+    return "success", ClientSuccessOutput(output)
 
 
 if __name__ == "__main__":
     sys.exit(
         plugin.run(
             plugin.build_schema(
-                # List your step functions here:
                 iperf3_server,
                 iperf3_client,
             )

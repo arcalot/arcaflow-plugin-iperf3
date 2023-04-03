@@ -238,21 +238,24 @@ class ClientInputParams(CommonInputParams):
         typing.Optional[int],
         schema.name("time"),
         schema.units(unit_seconds),
-        schema.conflicts("bytes blockcount"),
+        schema.conflicts("bytes"),
+        schema.conflicts("blockcount"),
         schema.description("time in seconds to transmit for (default 10 secs)"),
     ] = None
     bytes: typing.Annotated[
         typing.Optional[int],
         schema.name("bytes"),
         schema.units(unit_bytes),
-        schema.conflicts("time blockcount"),
+        schema.conflicts("time"),
+        schema.conflicts("blockcount"),
         schema.description(f"number of bytes to transmit {kmgt_description}"),
     ] = None
     blockcount: typing.Annotated[
         typing.Optional[int],
         schema.name("block count"),
         schema.units(unit_bytes),
-        schema.conflicts("time bytes"),
+        schema.conflicts("time"),
+        schema.conflicts("bytes"),
         schema.description(
             f"number of blocks (packets) to transmit {kmgt_description}"
         ),

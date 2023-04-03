@@ -49,6 +49,7 @@ def run_iperf3(mode, input_params):
         return subprocess.Popen(
             iperf3_cmd,
             stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
         )
 
 
@@ -117,10 +118,7 @@ def iperf3_client(
 
     if errs is not None and len(errs) > 0:
         return "error", ClientErrorOutput(outs + "\n" + errs.decode("utf-8"))
-    if (
-        outs.find(b"aborted") != -1
-        or outs.find(b"WARNING: Errors detected during run") != -1
-    ):
+    if outs.find(b"Connection refused") != -1:
         return "error", ClientErrorOutput(
             "Errors found in run. Output:\n" + outs.decode("utf-8")
         )

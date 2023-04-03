@@ -395,14 +395,13 @@ class ClientInputParams(CommonInputParams):
 
 client_input_params_schema = plugin.build_object_schema(ClientInputParams)
 
+@dataclass
+class ClientSuccessOutput:
+    output: typing.Dict[str, schema.ANY_TYPE]
+
 
 @dataclass
 class ServerSuccessOutput:
-    message: str
-
-
-@dataclass
-class ClientSuccessOutput:
     message: str
 
 

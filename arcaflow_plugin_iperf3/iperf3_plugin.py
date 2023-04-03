@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import json
 import sys
 import typing
 import subprocess
@@ -126,7 +127,7 @@ def iperf3_client(
     # Debug output
     print(outs.decode("utf-8"))
 
-    return "success", ClientSuccessOutput("TODO")
+    return "success", ClientSuccessOutput(json.loads(outs.decode("utf-8")))
 
 
 if __name__ == "__main__":

@@ -19,10 +19,10 @@ Runs the iperf3 client workload
                 <table><tbody><tr><th>Name:</th><td>target bitrate in bits/sec (0 for unlimited)(default 1 Mbit/sec for UDP, unlimited for TCP) (optional slash and packet count for burst mode) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bits</td></tr>
 </tbody></table>
             </details><details><summary>blockcount (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>number of blocks (packets) to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time bytes</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+                <table><tbody><tr><th>Name:</th><td>number of blocks (packets) to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time, bytes</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
             </details><details><summary>bytes (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>number of bytes to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+                <table><tbody><tr><th>Name:</th><td>number of bytes to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time, blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
             </details><details><summary>congestion (<code>enum[string]</code>)</summary>
                 <table><tbody><tr><th>Name:</th><td>set TCP congestion control algorithm (Linux and FreeBSD only)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
@@ -82,26 +82,23 @@ Runs the iperf3 client workload
             </details><details><summary>port (<code>int</code>)</summary>
                 <table><tbody><tr><th>Name:</th><td>server port to listen on/connect to</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
-            </details><details><summary>protocol (<code>enum[string]</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>the protocol to use - TCP, UDP, or SCTP (default TCP)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;TCP&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
-        <details><summary>Values</summary>
-            <ul><li><strong><code>SCTP</code>:</strong> SCTP</li><li><strong><code>TCP</code>:</strong> TCP</li><li><strong><code>UDP</code>:</strong> UDP</li></ul>
-        </details>
-    </td>
-</tr></tbody></table>
             </details><details><summary>reverse (<code>bool</code>)</summary>
                 <table><tbody><tr><th>Name:</th><td>run in reverse mode (server sends, client receives)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+            </details><details><summary>sctp (<code>bool</code>)</summary>
+                <table><tbody><tr><th>Name:</th><td>use the SCTP protocol for network traffic</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>udp</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
             </details><details><summary>set-mss (<code>int</code>)</summary>
                 <table><tbody><tr><th>Name:</th><td>set TCP/SCTP maximum segment size (MTU - 40 bytes) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
             </details><details><summary>time (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>time in seconds to transmit for (default 10 secs)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>bytes blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>seconds</td></tr>
+                <table><tbody><tr><th>Name:</th><td>time in seconds to transmit for (default 10 secs)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>bytes, blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>seconds</td></tr>
 </tbody></table>
             </details><details><summary>title (<code>string</code>)</summary>
                 <table><tbody><tr><th>Name:</th><td>prefix every output line with this string</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>tos (<code>int</code>)</summary>
                 <table><tbody><tr><th>Name:</th><td>set the IP type of service, 0-255.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Minimum:</th><td>0</td></tr><tr><th>Maximum:</th><td>255</td></tr>
 </tbody></table>
+            </details><details><summary>udp (<code>bool</code>)</summary>
+                <table><tbody><tr><th>Name:</th><td>use the UDP protocol for network traffic</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>sctp</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
             </details><details><summary>udp-counters-64bit (<code>bool</code>)</summary>
                 <table><tbody><tr><th>Name:</th><td>use 64-bit counters in UDP test packets</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
             </details><details><summary>version4 (<code>bool</code>)</summary>
@@ -125,10 +122,10 @@ Runs the iperf3 client workload
         <table><tbody><tr><th>Name:</th><td>target bitrate in bits/sec (0 for unlimited)(default 1 Mbit/sec for UDP, unlimited for TCP) (optional slash and packet count for burst mode) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bits</td></tr>
 </tbody></table>
         </details><details><summary>blockcount (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>number of blocks (packets) to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time bytes</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+        <table><tbody><tr><th>Name:</th><td>number of blocks (packets) to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time, bytes</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>bytes (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>number of bytes to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+        <table><tbody><tr><th>Name:</th><td>number of bytes to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time, blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>congestion (<code>enum[string]</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>set TCP congestion control algorithm (Linux and FreeBSD only)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
@@ -188,26 +185,23 @@ Runs the iperf3 client workload
         </details><details><summary>port (<code>int</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>server port to listen on/connect to</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
-        </details><details><summary>protocol (<code>enum[string]</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>the protocol to use - TCP, UDP, or SCTP (default TCP)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;TCP&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
-        <details><summary>Values</summary>
-            <ul><li><strong><code>SCTP</code>:</strong> SCTP</li><li><strong><code>TCP</code>:</strong> TCP</li><li><strong><code>UDP</code>:</strong> UDP</li></ul>
-        </details>
-    </td>
-</tr></tbody></table>
         </details><details><summary>reverse (<code>bool</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>run in reverse mode (server sends, client receives)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        </details><details><summary>sctp (<code>bool</code>)</summary>
+        <table><tbody><tr><th>Name:</th><td>use the SCTP protocol for network traffic</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>udp</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>set-mss (<code>int</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>set TCP/SCTP maximum segment size (MTU - 40 bytes) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>time (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>time in seconds to transmit for (default 10 secs)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>bytes blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>seconds</td></tr>
+        <table><tbody><tr><th>Name:</th><td>time in seconds to transmit for (default 10 secs)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>bytes, blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>seconds</td></tr>
 </tbody></table>
         </details><details><summary>title (<code>string</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>prefix every output line with this string</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>tos (<code>int</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>set the IP type of service, 0-255.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Minimum:</th><td>0</td></tr><tr><th>Maximum:</th><td>255</td></tr>
 </tbody></table>
+        </details><details><summary>udp (<code>bool</code>)</summary>
+        <table><tbody><tr><th>Name:</th><td>use the UDP protocol for network traffic</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>sctp</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>udp-counters-64bit (<code>bool</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>use 64-bit counters in UDP test packets</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>version4 (<code>bool</code>)</summary>

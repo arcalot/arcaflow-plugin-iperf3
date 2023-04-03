@@ -184,19 +184,31 @@ class ClientInputParams(CommonInputParams):
             "the hostname or IP address of the iperf3 server; defaults to localhost"
         ),
     ] = "localhost"
-    protocol: typing.Annotated[
-        typing.Optional[Protocol],
-        schema.name("protocol"),
-        schema.description("the protocol to use - TCP, UDP, or SCTP (default TCP)"),
-    ] = Protocol.TCP
+    udp: typing.Annotated[
+        typing.Optional[bool],
+        schema.name("use UDP protocol"),
+        schema.conflicts("sctp"),
+        #FIXME These required_if are triggering even without the
+        #other parameters set
+        # # schema.required_if("udp_counters_64bit"),
+        schema.description("use the UDP protocol for network traffic"),
+    ] = None
+    sctp: typing.Annotated[
+        typing.Optional[bool],
+        schema.name("use SCTP protocol"),
+        schema.conflicts("udp"),
+        #FIXME These required_if are triggering even without the
+        #other parameters set
+        # schema.required_if("xbind"),
+        # schema.required_if("nstreams"),
+        schema.description("use the SCTP protocol for network traffic"),
+    ] = None
     xbind: typing.Annotated[
-        # TODO SCTP params should conflict w/ TCP or UDP protocol
         typing.Optional[bool],
         schema.name("sctp xbind"),
         schema.description("bind SCTP association to links"),
     ] = None
     nstreams: typing.Annotated[
-        # TODO SCTP params should conflict w/ TCP or UDP protocol
         typing.Optional[int],
         schema.name("sctp nstreams"),
         schema.description("number of SCTP streams"),

@@ -118,7 +118,7 @@ def iperf3_client(
 
     if errs is not None and len(errs) > 0:
         return "error", ClientErrorOutput(outs + "\n" + errs.decode("utf-8"))
-    if outs.find(b"Connection refused") != -1:
+    if outs.find(b"error") != -1:
         return "error", ClientErrorOutput(
             "Errors found in run. Output:\n" + outs.decode("utf-8")
         )

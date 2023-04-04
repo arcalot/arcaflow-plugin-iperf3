@@ -25,7 +25,7 @@ class Protocol(enum.Enum):
 
 
 class Congestion(enum.Enum):
-    #TODO Confirm this is fully inclusive
+    # TODO Confirm this is fully inclusive
     reno = "reno"
     cubic = "cubic"
     bic = "bic"
@@ -188,8 +188,8 @@ class ClientInputParams(CommonInputParams):
         typing.Optional[bool],
         schema.name("use UDP protocol"),
         schema.conflicts("sctp"),
-        #FIXME These required_if are triggering even without the
-        #other parameters set
+        # FIXME These required_if are triggering even without the
+        # other parameters set
         # # schema.required_if("udp_counters_64bit"),
         schema.description("use the UDP protocol for network traffic"),
     ] = None
@@ -197,8 +197,8 @@ class ClientInputParams(CommonInputParams):
         typing.Optional[bool],
         schema.name("use SCTP protocol"),
         schema.conflicts("udp"),
-        #FIXME These required_if are triggering even without the
-        #other parameters set
+        # FIXME These required_if are triggering even without the
+        # other parameters set
         # schema.required_if("xbind"),
         # schema.required_if("nstreams"),
         schema.description("use the SCTP protocol for network traffic"),
@@ -307,7 +307,9 @@ class ClientInputParams(CommonInputParams):
     congestion: typing.Annotated[
         typing.Optional[Congestion],
         schema.name("congestion algorithm"),
-        schema.description("set TCP congestion control algorithm (Linux and FreeBSD only)"),
+        schema.description(
+            "set TCP congestion control algorithm (Linux and FreeBSD only)"
+        ),
     ] = None
     set_mss: typing.Annotated[
         typing.Optional[int],

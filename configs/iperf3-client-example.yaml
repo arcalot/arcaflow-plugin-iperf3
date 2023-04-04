@@ -1,0 +1,7 @@
+port: 50000
+interval: 10
+time: 5
+  #udp: True
+#bytes: 100
+#blockcount: 1000
+bitrate: "100K"

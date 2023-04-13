@@ -423,7 +423,6 @@ class ClientSuccessOutput:
     output: ClientOutputCategories
 
 
-
 @dataclass
 class ServerSuccessOutput:
     message: str

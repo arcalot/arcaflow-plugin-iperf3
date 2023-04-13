@@ -188,19 +188,15 @@ class ClientInputParams(CommonInputParams):
         typing.Optional[bool],
         schema.name("use UDP protocol"),
         schema.conflicts("sctp"),
-        # FIXME These required_if are triggering even without the
-        # other parameters set
-        # # schema.required_if("udp_counters_64bit"),
+        schema.required_if("udp_counters_64bit"),
         schema.description("use the UDP protocol for network traffic"),
     ] = None
     sctp: typing.Annotated[
         typing.Optional[bool],
         schema.name("use SCTP protocol"),
         schema.conflicts("udp"),
-        # FIXME These required_if are triggering even without the
-        # other parameters set
-        # schema.required_if("xbind"),
-        # schema.required_if("nstreams"),
+        schema.required_if("xbind"),
+        schema.required_if("nstreams"),
         schema.description("use the SCTP protocol for network traffic"),
     ] = None
     xbind: typing.Annotated[
@@ -416,7 +412,6 @@ client_input_params_schema = plugin.build_object_schema(ClientInputParams)
 class ClientOutputCategories:
     start: typing.Dict[str, typing.Any]
     intervals: typing.List[typing.Any]
-    # intervals: typing.Dict[str, typing.Any]
     end: typing.Dict[str, typing.Any]
 
 
@@ -425,11 +420,7 @@ client_output_categories_schema = plugin.build_object_schema(ClientOutputCategor
 
 @dataclass
 class ClientSuccessOutput:
-    # output: typing.Dict[str, typing.Dict[str, typing.Any]]
     output: ClientOutputCategories
-
-
-# client_success_output_schema = plugin.build_object_schema(ClientSuccessOutput)
 
 
 @dataclass

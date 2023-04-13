@@ -188,19 +188,15 @@ class ClientInputParams(CommonInputParams):
         typing.Optional[bool],
         schema.name("use UDP protocol"),
         schema.conflicts("sctp"),
-        # FIXME These required_if are triggering even without the
-        # other parameters set
-        # # schema.required_if("udp_counters_64bit"),
+        schema.required_if("udp_counters_64bit"),
         schema.description("use the UDP protocol for network traffic"),
     ] = None
     sctp: typing.Annotated[
         typing.Optional[bool],
         schema.name("use SCTP protocol"),
         schema.conflicts("udp"),
-        # FIXME These required_if are triggering even without the
-        # other parameters set
-        # schema.required_if("xbind"),
-        # schema.required_if("nstreams"),
+        schema.required_if("xbind"),
+        schema.required_if("nstreams"),
         schema.description("use the SCTP protocol for network traffic"),
     ] = None
     xbind: typing.Annotated[

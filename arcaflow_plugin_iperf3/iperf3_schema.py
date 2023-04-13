@@ -412,7 +412,6 @@ client_input_params_schema = plugin.build_object_schema(ClientInputParams)
 class ClientOutputCategories:
     start: typing.Dict[str, typing.Any]
     intervals: typing.List[typing.Any]
-    # intervals: typing.Dict[str, typing.Any]
     end: typing.Dict[str, typing.Any]
 
 
@@ -421,11 +420,8 @@ client_output_categories_schema = plugin.build_object_schema(ClientOutputCategor
 
 @dataclass
 class ClientSuccessOutput:
-    # output: typing.Dict[str, typing.Dict[str, typing.Any]]
     output: ClientOutputCategories
 
-
-# client_success_output_schema = plugin.build_object_schema(ClientSuccessOutput)
 
 
 @dataclass

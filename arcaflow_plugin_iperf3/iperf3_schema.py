@@ -110,7 +110,7 @@ class CommonInputParams:
         typing.Optional[bool],
         schema.name("force flush"),
         schema.description("force flushing output at every interval"),
-    ] = False
+    ] = None
 
     # Params from the iperf3 input not used in the input schema
     # file name: typing.Annotated[
@@ -293,7 +293,7 @@ class ClientInputParams(CommonInputParams):
         typing.Optional[bool],
         schema.name("reverse"),
         schema.description("run in reverse mode (server sends, client receives)"),
-    ] = False
+    ] = None
     window: typing.Annotated[
         typing.Optional[int],
         schema.name("window size"),
@@ -321,19 +321,19 @@ class ClientInputParams(CommonInputParams):
         schema.id("no-delay"),
         schema.name("TCP/SCTP no delay"),
         schema.description("set TCP/SCTP no delay, disabling Nagle's Algorithm"),
-    ] = False
+    ] = None
     version4: typing.Annotated[
         typing.Optional[bool],
         schema.name("IPv4 only"),
         schema.conflicts("version6"),
         schema.description("only use IPv4"),
-    ] = False
+    ] = None
     version6: typing.Annotated[
         typing.Optional[bool],
         schema.name("IPv6 only"),
         schema.conflicts("version4"),
         schema.description("only use IPv6"),
-    ] = False
+    ] = None
     tos: typing.Annotated[
         typing.Optional[int],
         # TODO support octal and hex values?
@@ -359,7 +359,7 @@ class ClientInputParams(CommonInputParams):
         typing.Optional[bool],
         schema.name("zero copy"),
         schema.description("use a 'zero copy' method of sending data"),
-    ] = False
+    ] = None
     omit: typing.Annotated[
         typing.Optional[int],
         schema.name("omit first N seconds"),
@@ -376,7 +376,7 @@ class ClientInputParams(CommonInputParams):
         schema.id("get-server-output"),
         schema.name("get server output"),
         schema.description("get results from server"),
-    ] = False
+    ] = None
     udp_counters_64bit: typing.Annotated[
         typing.Optional[bool],
         # TODO only use with UDP

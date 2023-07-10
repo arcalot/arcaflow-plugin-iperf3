@@ -25,13 +25,12 @@ class HelloWorldTest(unittest.TestCase):
         # TODO -- Add output serialization test
         # plugin.test_object_serialization(
         #     iperf3_plugin.SuccessOutput(
-                
+
         #     )
         # )
 
         plugin.test_object_serialization(
-            iperf3_plugin.ClientErrorOutput(
-                error="This is an error")
+            iperf3_plugin.ClientErrorOutput(error="This is an error")
         )
 
     # TODO -- Add functional tests

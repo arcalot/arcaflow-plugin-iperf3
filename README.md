@@ -12,209 +12,209 @@ Runs the iperf3 client workload
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>ClientInputParams</td></tr>
 <tr><th>Properties</th><td><details><summary>affinity (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>[n/n,m] set CPU affinity</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>^\d&#43;$|^\d&#43;,\d&#43;$</code></td></tr></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>affinity</td></tr><tr><th>Description:</th><td>[n/n,m] set CPU affinity</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>^\d&#43;$|^\d&#43;,\d&#43;$</code></td></tr></tbody></table>
             </details><details><summary>bind (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>bind to the interface associated with the address &lt;host&gt;</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>bind</td></tr><tr><th>Description:</th><td>bind to the interface associated with the address &lt;host&gt;</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>bitrate (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>target bitrate in bits/sec (0 for unlimited)(default 1 Mbit/sec for UDP, unlimited for TCP) (optional slash and packet count for burst mode) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bits</td></tr>
+                <table><tbody><tr><th>Name:</th><td>bitrate</td></tr><tr><th>Description:</th><td>target bitrate in bits/sec (0 for unlimited)(default 1 Mbit/sec for UDP, unlimited for TCP) (optional slash and packet count for burst mode) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bits</td></tr>
 </tbody></table>
             </details><details><summary>blockcount (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>number of blocks (packets) to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time, bytes</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+                <table><tbody><tr><th>Name:</th><td>block count</td></tr><tr><th>Description:</th><td>number of blocks (packets) to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time, bytes</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
             </details><details><summary>bytes (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>number of bytes to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time, blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+                <table><tbody><tr><th>Name:</th><td>bytes</td></tr><tr><th>Description:</th><td>number of bytes to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time, blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
             </details><details><summary>congestion (<code>enum[string]</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>set TCP congestion control algorithm (Linux and FreeBSD only)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
+                <table><tbody><tr><th>Name:</th><td>congestion algorithm</td></tr><tr><th>Description:</th><td>set TCP congestion control algorithm (Linux and FreeBSD only)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
         <details><summary>Values</summary>
             <ul><li><strong><code>YeAH</code>:</strong> YeAH</li><li><strong><code>bic</code>:</strong> bic</li><li><strong><code>cubic</code>:</strong> cubic</li><li><strong><code>htcp</code>:</strong> htcp</li><li><strong><code>reno</code>:</strong> reno</li><li><strong><code>vegas</code>:</strong> vegas</li><li><strong><code>westwood</code>:</strong> westwood</li></ul>
         </details>
     </td>
 </tr></tbody></table>
             </details><details><summary>connect-timeout (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>timeout for control connection setup (ms)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>connect timeout</td></tr><tr><th>Description:</th><td>timeout for control connection setup (ms)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>cport (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>bind to a specific client port (TCP and UDP, default: ephemeral port)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>client port</td></tr><tr><th>Description:</th><td>bind to a specific client port (TCP and UDP, default: ephemeral port)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>dscp (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>set the IP dscp value, 0-63</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Minimum:</th><td>0</td></tr><tr><th>Maximum:</th><td>63</td></tr>
+                <table><tbody><tr><th>Name:</th><td>dscp</td></tr><tr><th>Description:</th><td>set the IP dscp value, 0-63</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Minimum:</th><td>0</td></tr><tr><th>Maximum:</th><td>63</td></tr>
 </tbody></table>
             </details><details><summary>flowlabel (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>set the IPv6 flow label (only supported on Linux)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>flow label</td></tr><tr><th>Description:</th><td>set the IPv6 flow label (only supported on Linux)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>forceflush (<code>bool</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>force flushing output at every interval</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>force flush</td></tr><tr><th>Description:</th><td>force flushing output at every interval</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
             </details><details><summary>format (<code>enum[string]</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>[kmgtKMGT] format to report: kibi-, mibi, gibi, tebi- bits/Bytes</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
+                <table><tbody><tr><th>Name:</th><td>format</td></tr><tr><th>Description:</th><td>[kmgtKMGT] format to report: kibi-, mibi, gibi, tebi- bits/Bytes</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
         <details><summary>Values</summary>
             <ul><li><strong><code>G</code>:</strong> G</li><li><strong><code>K</code>:</strong> K</li><li><strong><code>M</code>:</strong> M</li><li><strong><code>T</code>:</strong> T</li><li><strong><code>g</code>:</strong> g</li><li><strong><code>k</code>:</strong> k</li><li><strong><code>m</code>:</strong> m</li><li><strong><code>t</code>:</strong> t</li></ul>
         </details>
     </td>
 </tr></tbody></table>
             </details><details><summary>fq-rate (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>enable fair-queuing based socket pacing inbits/sec (Linux only) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bits</td></tr>
+                <table><tbody><tr><th>Name:</th><td>fair-queuing rate</td></tr><tr><th>Description:</th><td>enable fair-queuing based socket pacing inbits/sec (Linux only) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bits</td></tr>
 </tbody></table>
             </details><details><summary>get-server-output (<code>bool</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>get results from server</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>get server output</td></tr><tr><th>Description:</th><td>get results from server</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
             </details><details><summary>host (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>the hostname or IP address of the iperf3 server; defaults to localhost</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;localhost&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>server host</td></tr><tr><th>Description:</th><td>the hostname or IP address of the iperf3 server; defaults to localhost</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;localhost&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>interval (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>seconds between periodic throughput reports</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>interval</td></tr><tr><th>Description:</th><td>seconds between periodic throughput reports</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>length (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>length of buffer to read or write (default 128 KB for TCP, dynamic or 1460 for UDP) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+                <table><tbody><tr><th>Name:</th><td>length</td></tr><tr><th>Description:</th><td>length of buffer to read or write (default 128 KB for TCP, dynamic or 1460 for UDP) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
             </details><details><summary>no-delay (<code>bool</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>set TCP/SCTP no delay, disabling Nagle&#39;s Algorithm</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>TCP/SCTP no delay</td></tr><tr><th>Description:</th><td>set TCP/SCTP no delay, disabling Nagle&#39;s Algorithm</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
             </details><details><summary>nstreams (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>number of SCTP streams</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>sctp nstreams</td></tr><tr><th>Description:</th><td>number of SCTP streams</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>omit (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>omit the first n seconds</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>omit first N seconds</td></tr><tr><th>Description:</th><td>omit the first n seconds</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>pacing-timer (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>set the timing for pacing, in microseconds (default 1000)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>miliseconds</td></tr>
+                <table><tbody><tr><th>Name:</th><td>pacing timer</td></tr><tr><th>Description:</th><td>set the timing for pacing, in microseconds (default 1000)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>miliseconds</td></tr>
 </tbody></table>
             </details><details><summary>parallel (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>number of parallel client streams to run</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>parallel</td></tr><tr><th>Description:</th><td>number of parallel client streams to run</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>port (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>server port to listen on/connect to</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>port</td></tr><tr><th>Description:</th><td>server port to listen on/connect to</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>reverse (<code>bool</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>run in reverse mode (server sends, client receives)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>reverse</td></tr><tr><th>Description:</th><td>run in reverse mode (server sends, client receives)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
             </details><details><summary>sctp (<code>bool</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>use the SCTP protocol for network traffic</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>udp</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>use SCTP protocol</td></tr><tr><th>Description:</th><td>use the SCTP protocol for network traffic</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Required if the following fields are set:</th><td>xbind, nstreams</td></tr><tr><th>Conflicts the following fields:</th><td>udp</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
             </details><details><summary>set-mss (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>set TCP/SCTP maximum segment size (MTU - 40 bytes) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+                <table><tbody><tr><th>Name:</th><td>maximum segment size</td></tr><tr><th>Description:</th><td>set TCP/SCTP maximum segment size (MTU - 40 bytes) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
             </details><details><summary>time (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>time in seconds to transmit for (default 10 secs)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>bytes, blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>seconds</td></tr>
+                <table><tbody><tr><th>Name:</th><td>time</td></tr><tr><th>Description:</th><td>time in seconds to transmit for (default 10 secs)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>bytes, blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>seconds</td></tr>
 </tbody></table>
             </details><details><summary>title (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>prefix every output line with this string</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>output prefix</td></tr><tr><th>Description:</th><td>prefix every output line with this string</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>tos (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>set the IP type of service, 0-255.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Minimum:</th><td>0</td></tr><tr><th>Maximum:</th><td>255</td></tr>
+                <table><tbody><tr><th>Name:</th><td>IP type of service</td></tr><tr><th>Description:</th><td>set the IP type of service, 0-255.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Minimum:</th><td>0</td></tr><tr><th>Maximum:</th><td>255</td></tr>
 </tbody></table>
             </details><details><summary>udp (<code>bool</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>use the UDP protocol for network traffic</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>sctp</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>use UDP protocol</td></tr><tr><th>Description:</th><td>use the UDP protocol for network traffic</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Required if the following fields are set:</th><td>udp_counters_64bit</td></tr><tr><th>Conflicts the following fields:</th><td>sctp</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
             </details><details><summary>udp-counters-64bit (<code>bool</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>use 64-bit counters in UDP test packets</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>UDP 64-bit counters</td></tr><tr><th>Description:</th><td>use 64-bit counters in UDP test packets</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
             </details><details><summary>version4 (<code>bool</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>only use IPv4</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Conflicts the following fields:</th><td>version6</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>IPv4 only</td></tr><tr><th>Description:</th><td>only use IPv4</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>version6</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
             </details><details><summary>version6 (<code>bool</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>only use IPv6</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Conflicts the following fields:</th><td>version4</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>IPv6 only</td></tr><tr><th>Description:</th><td>only use IPv6</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>version4</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
             </details><details><summary>window (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>set window size / socket buffer size - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+                <table><tbody><tr><th>Name:</th><td>window size</td></tr><tr><th>Description:</th><td>set window size / socket buffer size - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
             </details><details><summary>xbind (<code>bool</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>bind SCTP association to links</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>sctp xbind</td></tr><tr><th>Description:</th><td>bind SCTP association to links</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
             </details><details><summary>zerocopy (<code>bool</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>use a &#39;zero copy&#39; method of sending data</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>zero copy</td></tr><tr><th>Description:</th><td>use a &#39;zero copy&#39; method of sending data</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>ClientInputParams (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>affinity (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>[n/n,m] set CPU affinity</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>^\d&#43;$|^\d&#43;,\d&#43;$</code></td></tr></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>affinity</td></tr><tr><th>Description:</th><td>[n/n,m] set CPU affinity</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>^\d&#43;$|^\d&#43;,\d&#43;$</code></td></tr></tbody></table>
         </details><details><summary>bind (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>bind to the interface associated with the address &lt;host&gt;</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>bind</td></tr><tr><th>Description:</th><td>bind to the interface associated with the address &lt;host&gt;</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>bitrate (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>target bitrate in bits/sec (0 for unlimited)(default 1 Mbit/sec for UDP, unlimited for TCP) (optional slash and packet count for burst mode) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bits</td></tr>
+        <table><tbody><tr><th>Name:</th><td>bitrate</td></tr><tr><th>Description:</th><td>target bitrate in bits/sec (0 for unlimited)(default 1 Mbit/sec for UDP, unlimited for TCP) (optional slash and packet count for burst mode) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bits</td></tr>
 </tbody></table>
         </details><details><summary>blockcount (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>number of blocks (packets) to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time, bytes</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+        <table><tbody><tr><th>Name:</th><td>block count</td></tr><tr><th>Description:</th><td>number of blocks (packets) to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time, bytes</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>bytes (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>number of bytes to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time, blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+        <table><tbody><tr><th>Name:</th><td>bytes</td></tr><tr><th>Description:</th><td>number of bytes to transmit - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>time, blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>congestion (<code>enum[string]</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>set TCP congestion control algorithm (Linux and FreeBSD only)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
+        <table><tbody><tr><th>Name:</th><td>congestion algorithm</td></tr><tr><th>Description:</th><td>set TCP congestion control algorithm (Linux and FreeBSD only)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
         <details><summary>Values</summary>
             <ul><li><strong><code>YeAH</code>:</strong> YeAH</li><li><strong><code>bic</code>:</strong> bic</li><li><strong><code>cubic</code>:</strong> cubic</li><li><strong><code>htcp</code>:</strong> htcp</li><li><strong><code>reno</code>:</strong> reno</li><li><strong><code>vegas</code>:</strong> vegas</li><li><strong><code>westwood</code>:</strong> westwood</li></ul>
         </details>
     </td>
 </tr></tbody></table>
         </details><details><summary>connect-timeout (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>timeout for control connection setup (ms)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>connect timeout</td></tr><tr><th>Description:</th><td>timeout for control connection setup (ms)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>cport (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>bind to a specific client port (TCP and UDP, default: ephemeral port)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>client port</td></tr><tr><th>Description:</th><td>bind to a specific client port (TCP and UDP, default: ephemeral port)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>dscp (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>set the IP dscp value, 0-63</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Minimum:</th><td>0</td></tr><tr><th>Maximum:</th><td>63</td></tr>
+        <table><tbody><tr><th>Name:</th><td>dscp</td></tr><tr><th>Description:</th><td>set the IP dscp value, 0-63</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Minimum:</th><td>0</td></tr><tr><th>Maximum:</th><td>63</td></tr>
 </tbody></table>
         </details><details><summary>flowlabel (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>set the IPv6 flow label (only supported on Linux)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>flow label</td></tr><tr><th>Description:</th><td>set the IPv6 flow label (only supported on Linux)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>forceflush (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>force flushing output at every interval</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>force flush</td></tr><tr><th>Description:</th><td>force flushing output at every interval</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>format (<code>enum[string]</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>[kmgtKMGT] format to report: kibi-, mibi, gibi, tebi- bits/Bytes</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
+        <table><tbody><tr><th>Name:</th><td>format</td></tr><tr><th>Description:</th><td>[kmgtKMGT] format to report: kibi-, mibi, gibi, tebi- bits/Bytes</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
         <details><summary>Values</summary>
             <ul><li><strong><code>G</code>:</strong> G</li><li><strong><code>K</code>:</strong> K</li><li><strong><code>M</code>:</strong> M</li><li><strong><code>T</code>:</strong> T</li><li><strong><code>g</code>:</strong> g</li><li><strong><code>k</code>:</strong> k</li><li><strong><code>m</code>:</strong> m</li><li><strong><code>t</code>:</strong> t</li></ul>
         </details>
     </td>
 </tr></tbody></table>
         </details><details><summary>fq-rate (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>enable fair-queuing based socket pacing inbits/sec (Linux only) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bits</td></tr>
+        <table><tbody><tr><th>Name:</th><td>fair-queuing rate</td></tr><tr><th>Description:</th><td>enable fair-queuing based socket pacing inbits/sec (Linux only) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bits</td></tr>
 </tbody></table>
         </details><details><summary>get-server-output (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>get results from server</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>get server output</td></tr><tr><th>Description:</th><td>get results from server</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>host (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>the hostname or IP address of the iperf3 server; defaults to localhost</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;localhost&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>server host</td></tr><tr><th>Description:</th><td>the hostname or IP address of the iperf3 server; defaults to localhost</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;localhost&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>interval (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>seconds between periodic throughput reports</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>interval</td></tr><tr><th>Description:</th><td>seconds between periodic throughput reports</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>length (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>length of buffer to read or write (default 128 KB for TCP, dynamic or 1460 for UDP) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+        <table><tbody><tr><th>Name:</th><td>length</td></tr><tr><th>Description:</th><td>length of buffer to read or write (default 128 KB for TCP, dynamic or 1460 for UDP) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>no-delay (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>set TCP/SCTP no delay, disabling Nagle&#39;s Algorithm</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>TCP/SCTP no delay</td></tr><tr><th>Description:</th><td>set TCP/SCTP no delay, disabling Nagle&#39;s Algorithm</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>nstreams (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>number of SCTP streams</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>sctp nstreams</td></tr><tr><th>Description:</th><td>number of SCTP streams</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>omit (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>omit the first n seconds</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>omit first N seconds</td></tr><tr><th>Description:</th><td>omit the first n seconds</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>pacing-timer (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>set the timing for pacing, in microseconds (default 1000)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>miliseconds</td></tr>
+        <table><tbody><tr><th>Name:</th><td>pacing timer</td></tr><tr><th>Description:</th><td>set the timing for pacing, in microseconds (default 1000)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>miliseconds</td></tr>
 </tbody></table>
         </details><details><summary>parallel (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>number of parallel client streams to run</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>parallel</td></tr><tr><th>Description:</th><td>number of parallel client streams to run</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>port (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>server port to listen on/connect to</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>port</td></tr><tr><th>Description:</th><td>server port to listen on/connect to</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>reverse (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>run in reverse mode (server sends, client receives)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>reverse</td></tr><tr><th>Description:</th><td>run in reverse mode (server sends, client receives)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>sctp (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>use the SCTP protocol for network traffic</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>udp</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>use SCTP protocol</td></tr><tr><th>Description:</th><td>use the SCTP protocol for network traffic</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Required if the following fields are set:</th><td>xbind, nstreams</td></tr><tr><th>Conflicts the following fields:</th><td>udp</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>set-mss (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>set TCP/SCTP maximum segment size (MTU - 40 bytes) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+        <table><tbody><tr><th>Name:</th><td>maximum segment size</td></tr><tr><th>Description:</th><td>set TCP/SCTP maximum segment size (MTU - 40 bytes) - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>time (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>time in seconds to transmit for (default 10 secs)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>bytes, blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>seconds</td></tr>
+        <table><tbody><tr><th>Name:</th><td>time</td></tr><tr><th>Description:</th><td>time in seconds to transmit for (default 10 secs)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>bytes, blockcount</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>seconds</td></tr>
 </tbody></table>
         </details><details><summary>title (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>prefix every output line with this string</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>output prefix</td></tr><tr><th>Description:</th><td>prefix every output line with this string</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>tos (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>set the IP type of service, 0-255.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Minimum:</th><td>0</td></tr><tr><th>Maximum:</th><td>255</td></tr>
+        <table><tbody><tr><th>Name:</th><td>IP type of service</td></tr><tr><th>Description:</th><td>set the IP type of service, 0-255.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Minimum:</th><td>0</td></tr><tr><th>Maximum:</th><td>255</td></tr>
 </tbody></table>
         </details><details><summary>udp (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>use the UDP protocol for network traffic</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>sctp</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>use UDP protocol</td></tr><tr><th>Description:</th><td>use the UDP protocol for network traffic</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Required if the following fields are set:</th><td>udp_counters_64bit</td></tr><tr><th>Conflicts the following fields:</th><td>sctp</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>udp-counters-64bit (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>use 64-bit counters in UDP test packets</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>UDP 64-bit counters</td></tr><tr><th>Description:</th><td>use 64-bit counters in UDP test packets</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>version4 (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>only use IPv4</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Conflicts the following fields:</th><td>version6</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>IPv4 only</td></tr><tr><th>Description:</th><td>only use IPv4</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>version6</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>version6 (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>only use IPv6</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Conflicts the following fields:</th><td>version4</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>IPv6 only</td></tr><tr><th>Description:</th><td>only use IPv6</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Conflicts the following fields:</th><td>version4</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>window (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>set window size / socket buffer size - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+        <table><tbody><tr><th>Name:</th><td>window size</td></tr><tr><th>Description:</th><td>set window size / socket buffer size - accepts [KMGT] suffixes to indicate kibi-, mibi-, -gibi, or tebi-(2^10); integer input implies base unit (bits or bytes)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>xbind (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>bind SCTP association to links</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>sctp xbind</td></tr><tr><th>Description:</th><td>bind SCTP association to links</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>zerocopy (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>use a &#39;zero copy&#39; method of sending data</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>zero copy</td></tr><tr><th>Description:</th><td>use a &#39;zero copy&#39; method of sending data</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details></td></tr>
 </tbody></table>
         </details></details></td></tr>
@@ -311,50 +311,50 @@ Runs the passive iperf3 server to allow benchmarks between the client and this s
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>ServerAllParams</td></tr>
 <tr><th>Properties</th><td><details><summary>affinity (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>[n/n,m] set CPU affinity</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>^\d&#43;$|^\d&#43;,\d&#43;$</code></td></tr></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>affinity</td></tr><tr><th>Description:</th><td>[n/n,m] set CPU affinity</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>^\d&#43;$|^\d&#43;,\d&#43;$</code></td></tr></tbody></table>
             </details><details><summary>bind (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>bind to the interface associated with the address &lt;host&gt;</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>bind</td></tr><tr><th>Description:</th><td>bind to the interface associated with the address &lt;host&gt;</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>forceflush (<code>bool</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>force flushing output at every interval</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>force flush</td></tr><tr><th>Description:</th><td>force flushing output at every interval</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
             </details><details><summary>format (<code>enum[string]</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>[kmgtKMGT] format to report: kibi-, mibi, gibi, tebi- bits/Bytes</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
+                <table><tbody><tr><th>Name:</th><td>format</td></tr><tr><th>Description:</th><td>[kmgtKMGT] format to report: kibi-, mibi, gibi, tebi- bits/Bytes</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
         <details><summary>Values</summary>
             <ul><li><strong><code>G</code>:</strong> G</li><li><strong><code>K</code>:</strong> K</li><li><strong><code>M</code>:</strong> M</li><li><strong><code>T</code>:</strong> T</li><li><strong><code>g</code>:</strong> g</li><li><strong><code>k</code>:</strong> k</li><li><strong><code>m</code>:</strong> m</li><li><strong><code>t</code>:</strong> t</li></ul>
         </details>
     </td>
 </tr></tbody></table>
             </details><details><summary>interval (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>seconds between periodic throughput reports</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>interval</td></tr><tr><th>Description:</th><td>seconds between periodic throughput reports</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>port (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>server port to listen on/connect to</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>port</td></tr><tr><th>Description:</th><td>server port to listen on/connect to</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>run_duration (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>time in seconds to run the iperf3 server before exiting</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>600</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>server run duration</td></tr><tr><th>Description:</th><td>time in seconds to run the iperf3 server before exiting</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>600</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>ServerAllParams (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>affinity (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>[n/n,m] set CPU affinity</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>^\d&#43;$|^\d&#43;,\d&#43;$</code></td></tr></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>affinity</td></tr><tr><th>Description:</th><td>[n/n,m] set CPU affinity</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>^\d&#43;$|^\d&#43;,\d&#43;$</code></td></tr></tbody></table>
         </details><details><summary>bind (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>bind to the interface associated with the address &lt;host&gt;</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>bind</td></tr><tr><th>Description:</th><td>bind to the interface associated with the address &lt;host&gt;</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>forceflush (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>force flushing output at every interval</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>force flush</td></tr><tr><th>Description:</th><td>force flushing output at every interval</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>format (<code>enum[string]</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>[kmgtKMGT] format to report: kibi-, mibi, gibi, tebi- bits/Bytes</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
+        <table><tbody><tr><th>Name:</th><td>format</td></tr><tr><th>Description:</th><td>[kmgtKMGT] format to report: kibi-, mibi, gibi, tebi- bits/Bytes</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
         <details><summary>Values</summary>
             <ul><li><strong><code>G</code>:</strong> G</li><li><strong><code>K</code>:</strong> K</li><li><strong><code>M</code>:</strong> M</li><li><strong><code>T</code>:</strong> T</li><li><strong><code>g</code>:</strong> g</li><li><strong><code>k</code>:</strong> k</li><li><strong><code>m</code>:</strong> m</li><li><strong><code>t</code>:</strong> t</li></ul>
         </details>
     </td>
 </tr></tbody></table>
         </details><details><summary>interval (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>seconds between periodic throughput reports</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>interval</td></tr><tr><th>Description:</th><td>seconds between periodic throughput reports</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>port (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>server port to listen on/connect to</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>port</td></tr><tr><th>Description:</th><td>server port to listen on/connect to</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>run_duration (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>time in seconds to run the iperf3 server before exiting</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>600</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>server run duration</td></tr><tr><th>Description:</th><td>time in seconds to run the iperf3 server before exiting</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>600</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details></td></tr>
 </tbody></table>

@@ -1,9 +1,26 @@
 version: '3.2'
 services:
   plugin:
-    image: quay.io/arcalot/arcaflow-plugin-template-python
+    image: quay.io/arcalot/arcaflow-plugin-iperf3
+    command: "-s client -f /plugin/configs/iperf3-client-example.yaml"
     build: .
+    networks:
+      - cluster_network
+    links:
+      - "server"
+    depends_on:
+      - "server"
     volumes:
-      - source: ./example.yaml
-        target: /config/example.yaml
-        type: bind
+      - ./configs:/plugin/configs:z
+  server:
+    image: quay.io/arcalot/arcaflow-plugin-iperf3
+    command: "-s server -f /plugin/configs/iperf3-server-example.yaml"
+    build: .
+    ports:
+      - 50000:50000
+    networks:
+      - cluster_network
+    volumes:
+      - ./configs:/plugin/configs:z
+networks:
+  cluster_network:

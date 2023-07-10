@@ -28,6 +28,7 @@ RUN python -m coverage run tests/test_${package}.py \
 # STAGE 2 -- Build final plugin image
 FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-osbase:0.2.0
 ARG package
+RUN dnf -y install iperf3
 
 COPY --from=build /app/requirements.txt /app/
 COPY --from=build /htmlcov /htmlcov/

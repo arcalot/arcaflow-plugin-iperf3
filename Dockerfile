@@ -21,8 +21,8 @@ ENV PYTHONPATH /app/${package}
 WORKDIR /app/${package}
 
 # Run tests and return coverage analysis
-# RUN python -m coverage run tests/test_${package}.py \
-#  && python -m coverage html -d /htmlcov --omit=/usr/local/*
+RUN python -m coverage run tests/test_${package}.py \
+ && python -m coverage html -d /htmlcov --omit=/usr/local/*
 
 
 # STAGE 2 -- Build final plugin image

@@ -16,6 +16,7 @@ def run_iperf3_server():
     )
     return iperf3_plugin.iperf3_server(server_input)
 
+
 class iperf3Test(unittest.TestCase):
     @staticmethod
     def test_serialization():
@@ -43,7 +44,7 @@ class iperf3Test(unittest.TestCase):
 
     def test_functional(self):
         pool = ThreadPool(processes=1)
-      
+
         iperf3_server = pool.apply_async(run_iperf3_server)
 
         client_input = iperf3_schema.ClientInputParams(
@@ -55,8 +56,10 @@ class iperf3Test(unittest.TestCase):
         client_output_id, client_output_data = iperf3_plugin.iperf3_client(client_input)
 
         self.assertEqual("success", client_output_id)
-        self.assertEqual("TCP", client_output_data.output.start['test_start']['protocol'])
-        
+        self.assertEqual(
+            "TCP", client_output_data.output.start["test_start"]["protocol"]
+        )
+
         server_output_id, server_output_data = iperf3_server.get()
 
         self.assertEqual("success", server_output_id)

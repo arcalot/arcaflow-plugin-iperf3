@@ -5,9 +5,13 @@ description = ""
 authors = ["Arcalot"]
 license = "Apache-2.0+GPL-2.0-only"
 
+packages = [
+   { include="iperf3_plugin.py", from="./arcaflow_plugin_iperf3"  },
+]
+
 [tool.poetry.dependencies]
 python = "^3.9"
-arcaflow-plugin-sdk = "0.10.2"
+arcaflow-plugin-sdk = "^0.10.3"
 
 [tool.poetry.dev-dependencies]
 docformatter = "^1.5.0"

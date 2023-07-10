@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from time import sleep
 import unittest
 import iperf3_plugin
 import iperf3_schema
@@ -52,6 +53,8 @@ class iperf3Test(unittest.TestCase):
             interval=10,
             time=5,
         )
+
+        sleep(2)
 
         client_output_id, client_output_data = iperf3_plugin.iperf3_client(client_input)
 

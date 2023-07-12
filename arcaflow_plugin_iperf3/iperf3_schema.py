@@ -352,7 +352,7 @@ class ClientInputParams(CommonInputParams):
     ] = None
     flowlabel: typing.Annotated[
         typing.Optional[int],
-        schema.name(""),
+        schema.name("flow label"),
         schema.description("set the IPv6 flow label (only supported on Linux)"),
     ] = None
     zerocopy: typing.Annotated[

@@ -35,11 +35,11 @@ def run_iperf3(mode, input_params):
         elif param == "host":
             iperf3_cmd.append("--client")
             iperf3_cmd.append(f"{value}")
-        elif type(value) == bool and not value:
+        elif type(value) is bool and not value:
             continue
         else:
             iperf3_cmd.append(f"--{param}")
-            if type(value) != bool:
+            if type(value) is not bool:
                 iperf3_cmd.append(f"{value}")
 
     if mode == "server":
@@ -70,11 +70,11 @@ def iperf3_server(
     server_cmd = ["iperf3", "--server", "--json"]
     input_params = server_input_params_schema.serialize(params)
     for param, value in input_params.items():
-        if type(value) == bool and not value:
+        if type(value) is bool and not value:
             continue
         else:
             server_cmd.append(f"--{param}")
-            if type(value) != bool:
+            if type(value) is not bool:
                 server_cmd.append(f"{value}")
 
     print(

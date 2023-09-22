@@ -1,6 +1,6 @@
-arcaflow-plugin-sdk==0.10.3; python_version >= "3.9" and python_version < "4.0" \
-    --hash=sha256:04e68c3209f352a29346efdfa457be9774abf721cd8ebf511613a698d3c479a4 \
-    --hash=sha256:0c424f01ab2cd724a7a93aee0f16e9482b97716757e35e104e90d14d31019a66
+arcaflow-plugin-sdk==0.11.0; python_version >= "3.9" and python_version < "4.0" \
+    --hash=sha256:3a49a85037b88f5f4ed6b51c9a78428f6bbb57e47022484185721faf2c853535 \
+    --hash=sha256:c481c1fdfc51f2c056c73a0e016f04617813eda03f0debf1e5bc43b22b045e6f
 cbor2==5.4.6; python_version >= "3.9" and python_version < "4.0" \
     --hash=sha256:309fffbb7f561d67f02095d4b9657b73c9220558701c997e9bfcfbca2696e927 \
     --hash=sha256:ff95b33e5482313a74648ca3620c9328e9f30ecfa034df040b828e476597d352 \

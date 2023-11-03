@@ -65,7 +65,6 @@ def run_iperf3(mode, input_params):
 def iperf3_server(
     params: ServerAllParams,
 ) -> typing.Tuple[str, typing.Union[ServerSuccessOutput, ServerErrorOutput]]:
-
     # Set the iperf3 server command
     server_cmd = ["iperf3", "--server", "--json"]
     input_params = server_input_params_schema.serialize(params)
@@ -110,7 +109,6 @@ def iperf3_server(
 def iperf3_client(
     params: ClientInputParams,
 ) -> typing.Tuple[str, typing.Union[ClientSuccessOutput, ClientErrorOutput]]:
-
     input_params = client_input_params_schema.serialize(params)
 
     with run_iperf3("client", input_params) as master_process:

@@ -15,7 +15,7 @@ def run_iperf3_server():
         interval=1,
         forceflush=True,
     )
-    return iperf3_plugin.iperf3_server(server_input)
+    return iperf3_plugin.iperf3_server(params=server_input, run_id="plugin_server_ci")
 
 
 class iperf3Test(unittest.TestCase):
@@ -56,7 +56,9 @@ class iperf3Test(unittest.TestCase):
 
         sleep(2)
 
-        client_output_id, client_output_data = iperf3_plugin.iperf3_client(client_input)
+        client_output_id, client_output_data = iperf3_plugin.iperf3_client(
+            params=client_input, run_id="plugin_client_ci"
+        )
 
         self.assertEqual("success", client_output_id)
         self.assertEqual(

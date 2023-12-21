@@ -6,7 +6,7 @@ import typing
 import subprocess
 
 from arcaflow_plugin_sdk import plugin
-from iperf3_schema import (
+from arcaflow_plugin_iperf3.iperf3_schema import (
     ServerAllParams,
     ServerSuccessOutput,
     ServerErrorOutput,

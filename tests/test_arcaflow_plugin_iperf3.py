@@ -2,8 +2,8 @@
 
 from time import sleep
 import unittest
-import iperf3_plugin
-import iperf3_schema
+import arcaflow_plugin_iperf3.iperf3_plugin as iperf3_plugin
+import arcaflow_plugin_iperf3.iperf3_schema as iperf3_schema
 from multiprocessing.pool import ThreadPool
 from arcaflow_plugin_sdk import plugin
 

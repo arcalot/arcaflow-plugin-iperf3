@@ -91,8 +91,11 @@ def iperf3_server(
         # It should not end itself, so getting here means there was an
         # error.
         return "error", ServerErrorOutput(
-            result.returncode,
-            result.stdout.decode("utf-8") + result.stderr.decode("utf-8"),
+            "error ({}):\nstdout:\n{}\nstderr:\n{}".format(
+                result.returncode,
+                result.stdout.decode("utf-8"),
+                result.stderr.decode("utf-8"),
+            )
         )
     except subprocess.TimeoutExpired:
         # Worked as intended. It doesn't end itself, so it finished when it
@@ -103,7 +106,7 @@ def iperf3_server(
 @plugin.step(
     id="client",
     name="iperf3 Client",
-    description=("Runs the iperf3 client workload"),
+    description="Runs the iperf3 client workload",
     outputs={"success": ClientSuccessOutput, "error": ClientErrorOutput},
 )
 def iperf3_client(
@@ -115,7 +118,12 @@ def iperf3_client(
         outs, errs = master_process.communicate()
 
     if errs is not None and len(errs) > 0:
-        return "error", ClientErrorOutput(outs + "\n" + errs.decode("utf-8"))
+        return "error", ClientErrorOutput(
+            "error:\nstdout:\n{}\nstderr:\n{}".format(
+                outs.decode("utf-8"),
+                errs.decode("utf-8"),
+            )
+        )
     if outs.find(b"error") != -1:
         return "error", ClientErrorOutput(
             "Errors found in run. Output:\n" + outs.decode("utf-8")

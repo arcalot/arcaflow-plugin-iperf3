@@ -3,7 +3,7 @@ ARG package=arcaflow_plugin_iperf3
 # STAGE 1 -- Build module dependencies and run tests
 # The 'poetry' and 'coverage' modules are installed and verson-controlled in the
 # quay.io/arcalot/arcaflow-plugin-baseimage-python-buildbase image to limit drift
-FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-buildbase:0.3.1@sha256:9767207e2de6597c4d6bd2345d137ac03661326734d4e6824840d270d3415e12 as build
+FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-buildbase:0.4.2@sha256:eecaa5bbcac62d5263cfe575d026434c65ee4cbec833931335806cea597c60e3 as build
 ARG package
 RUN dnf -y install iperf3
 
@@ -26,7 +26,7 @@ RUN python -m coverage run tests/test_${package}.py \
 
 
 # STAGE 2 -- Build final plugin image
-FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-osbase:0.3.1@sha256:0e9384416ad5dd8810c410a87c283ca29a368fc85592378b85261fce5f9ecbeb
+FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-osbase:0.4.2@sha256:f8c6ef07baca91888db81f50d1eb54530df8a6bb8e3071e44b86667f5dbfe4b5
 ARG package
 RUN dnf -y install iperf3
 

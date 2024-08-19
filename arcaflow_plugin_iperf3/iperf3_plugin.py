@@ -117,14 +117,14 @@ def iperf3_client(
     with run_iperf3("client", input_params) as master_process:
         outs, errs = master_process.communicate()
 
-    if errs is not None and len(errs) > 0:
+    if errs is not None and len(errs) > 0 and b"Broken pipe" not in errs:
         return "error", ClientErrorOutput(
             "error:\nstdout:\n{}\nstderr:\n{}".format(
                 outs.decode("utf-8"),
                 errs.decode("utf-8"),
             )
         )
-    if outs.find(b"error") != -1:
+    if b"error" in outs:
         return "error", ClientErrorOutput(
             "Errors found in run. Output:\n" + outs.decode("utf-8")
         )

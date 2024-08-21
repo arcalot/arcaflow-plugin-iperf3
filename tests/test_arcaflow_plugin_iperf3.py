@@ -60,7 +60,17 @@ class iperf3Test(unittest.TestCase):
             params=client_input, run_id="plugin_client_ci"
         )
 
-        self.assertEqual("success", client_output_id)
+        if client_output_id == "success":
+            pass
+        elif client_output_id == "error":
+            self.fail(f"Plugin returned error: {client_output_data.error}")
+        else:
+            self.fail(
+                "Plugin returned unexpected ID, '{}': {}".format(
+                    client_output_id, client_output_data
+                )
+            )
+
         self.assertEqual(
             "TCP", client_output_data.output.start["test_start"]["protocol"]
         )
